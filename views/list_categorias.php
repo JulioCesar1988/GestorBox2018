@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
   <title>GestorBox</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <?php include '../views/navbar.php';?>
+  <?php include '../views/navbar.php';?>
+
 <div class="container">
 </div>
 <?php
@@ -17,20 +13,59 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "gestorboxdb";
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-$sql = "SELECT * FROM categoria";
-$result = $conn->query($sql);
 
+ ?>
+
+
+
+
+
+
+<div class="container">
+  <h2>Categoris </h2>
+  <p>Categorias del sistema , las categorias pertenecen a un sector , son generadas por ellos , es necesario para generar el codigo de la caja  .</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>cod</th>
+        <th>descripcion</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+         <?php
+$sql = "SELECT * FROM categoria"; $result = $conn->query($sql);
+  ?>                     
+
+<?php
 if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-       echo "Nombre -> " . $row["nombre"]. " Cod -> " . $row["cod"]. " Descripcion ->  " . $row["descripcion"]. "<br>"; 
+    while($row = $result->fetch_assoc()) {   ?>
+      <tr>
+        <td> <?php echo  $row["nombre"] ?> </td>
+        <td><?php echo  $row["cod"] ?></td>
+        <td><?php echo  $row["descripcion"] ?></td>
+        
+        <th><button type="button" class="btn btn-primary">agregar</button></th>
+        <th><button type="button" class="btn btn-info">Informacion</button></th>
+        <th><button type="button" class="btn btn-warning">Modificar</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
+        <!--<th><button type="button" class="btn btn-link">Link</button></th>
+        <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
+        <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
+       <th><a class="btn btn-primary" href="../views/add_user.php" role="button">Link</a></th> -->
+
+
+      </tr>
+     <?php
+
 
     }
 } else {
@@ -39,18 +74,23 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<p> <a href="../views/add_categoria.php">Agregar</a>? <br /> </p>
-<p> <a href="../views/add_categoria.php"> </a> ? <br /> </p>
+    </tbody>
 
-<a class="btn btn-primary" href="../views/add_categoria.php" role="button">Link</a>
-<button type="button" href="../views/add_categoria.php" class="btn" >Basic</button>
-<button type="button" class="btn btn-default">Default</button>
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-link">Link</button>
+  </table>
+
+
+</div>
+
+
+
+
+
+
+       <!-- echo "descripcion -> " . $row["descripcion"]. " pricintoA -> " . $row["precintoA"]. " precintoB ->  " . --> <!--$row["precintoB"]." Ubicacion -> " . $row["ubicacion"] .". Sector -> -> " . $row["id_sector"] ."  <br>"; -->
+
+
+
+
 
 </body>
 </html>

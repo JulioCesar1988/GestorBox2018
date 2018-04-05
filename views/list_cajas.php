@@ -20,21 +20,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+ ?>
 
 
-$sql = "SELECT * FROM caja";
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-       echo "descripcion -> " . $row["descripcion"]. " pricintoA -> " . $row["precintoA"]. " precintoB ->  " . $row["precintoB"]." Ubicacion -> " . $row["ubicacion"] .". Sector -> -> " . $row["id_sector"] ."  <br>"; 
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
-?>
+
 
 
 <div class="container">
@@ -48,26 +38,28 @@ $conn->close();
         <th>PrecintoB</th>
         <th>Ubicacion</th>
         <th>Sector</th>
-        <th>Codigo</th>
+        
       </tr>
     </thead>
     <tbody>
+         <?php
+$sql = "SELECT * FROM caja"; $result = $conn->query($sql);
+  ?>                     
+
+<?php
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {   ?>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-
-        <th><button type="button" class="btn btn-success">Agregar</button></th>
+        <td> <?php echo  $row["descripcion"] ?> </td>
+        <td><?php echo  $row["precintoA"] ?></td>
+        <td><?php echo  $row["precintoB"] ?></td>
+        <td><?php echo  $row["ubicacion"] ?></td>
+        <td><?php echo  $row["id_sector"] ?></td>
+        <th><button type="button" class="btn btn-primary">Pedir</button></th>
         <th><button type="button" class="btn btn-info">Informacion</button></th>
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
         <th><button type="button" class="btn btn-danger">Eliminar</button></th>
-
-
-
         <!--<th><button type="button" class="btn btn-link">Link</button></th>
         <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
         <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
@@ -75,13 +67,31 @@ $conn->close();
 
 
       </tr>
-      
+     <?php
+
+
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+
     </tbody>
 
   </table>
 
 
 </div>
+
+
+
+
+
+
+       <!-- echo "descripcion -> " . $row["descripcion"]. " pricintoA -> " . $row["precintoA"]. " precintoB ->  " . --> <!--$row["precintoB"]." Ubicacion -> " . $row["ubicacion"] .". Sector -> -> " . $row["id_sector"] ."  <br>"; -->
+
+
 
 
 
