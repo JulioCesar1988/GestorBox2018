@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 
  ?>
 
- <center><th><button type="button" class="btn btn-primary">agregar</button></th></center>
+   <center> <th><a  href="../views/add_user.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
 
 <div class="container">
   <h2>Categoris </h2>
@@ -48,12 +48,12 @@ if ($result->num_rows > 0) {
         <td> <?php echo  $row["nombre"] ?> </td>
         <td><?php echo  $row["email"] ?></td>
         <td><?php echo  $row["clave"] ?></td>
-          <td><?php echo  $row["id"] ?></td>
+       
   
         <th><button type="button" class="btn btn-info">Informacion</button></th>
+
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
-        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
-        <th><p> <a href="../views/add_caja.php">Que ID ?</a>? <br /> </p></th>
+         <th><a  href="../views/delete_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <!--<th><button type="button" class="btn btn-link">Link</button></th>
         <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
         <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>

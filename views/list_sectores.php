@@ -56,6 +56,8 @@ if ($result->num_rows > 0) {
         <th><button type="button" class="btn btn-info">Informacion</button></th>
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
         <th><button type="button" class="btn btn-danger">Eliminar</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
+       <a href="#" class="btn btn-info" role="button">Link Button</a>
         <!--<th><button type="button" class="btn btn-link">Link</button></th>
         <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
         <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>

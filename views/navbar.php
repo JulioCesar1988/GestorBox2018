@@ -31,7 +31,7 @@
       <ul class="nav navbar-nav">
        
         </li>
-             <li><a href="/gestorbox2018/views/add_user.php">CrearUsuario</a></li>
+           
    
       <li><a href="/gestorbox2018/views/list_users.php">Usuario</a></li>
       <li><a href="/gestorbox2018/views/list_sectores.php">Sector</a></li>

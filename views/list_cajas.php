@@ -59,12 +59,12 @@ if ($result->num_rows > 0) {
         <th><button type="button" class="btn btn-primary">Pedir</button></th>
         <th><button type="button" class="btn btn-info">Informacion</button></th>
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
-        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
+        
         <!--<th><button type="button" class="btn btn-link">Link</button></th>
         <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
         <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
        <th><a class="btn btn-primary" href="../views/add_user.php" role="button">Link</a></th> -->
-
+     
 
       </tr>
      <?php
