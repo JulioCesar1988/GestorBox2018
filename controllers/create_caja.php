@@ -20,7 +20,7 @@ echo "Ubicacion -> $ubicacion";
   
   $caja = new Caja();
   
-  if(!empty($descripcion) && !empty($precintoA) && !empty($precintoB) && !empty($id_sector)   ) {
+  if(!empty($descripcion) && !empty($precintoA) && !empty($precintoB)    ) {
     $caja->insert( $descripcion, $precintoA , $precintoB , $id_sector , $ubicacion );
   
 
@@ -29,7 +29,7 @@ echo "Ubicacion -> $ubicacion";
   } else {
 
     echo "00000000000000000000000000000 fracaso cajaaaaaaa ";
-    header('location:../views/list_users.php');
+  
   }
 
 ?>

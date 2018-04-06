@@ -29,7 +29,8 @@ if ($conn->connect_error) {
 
 <div class="container">
   <h2>Cajas </h2>
-  <p>Cajas del sistema , podemos pedir una caja , modificar y cargar una caja , generar etiquetas .</p>            
+  <p>Cajas del sistema , podemos pedir una caja , modificar y cargar una caja , generar etiquetas .</p>    
+               <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>        
   <table class="table">
     <thead>
       <tr>
@@ -59,7 +60,7 @@ if ($result->num_rows > 0) {
         <th><button type="button" class="btn btn-primary">Pedir</button></th>
         <th><button type="button" class="btn btn-info">Informacion</button></th>
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
-        
+
         <!--<th><button type="button" class="btn btn-link">Link</button></th>
         <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
         <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
