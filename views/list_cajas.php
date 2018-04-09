@@ -29,8 +29,23 @@ if ($conn->connect_error) {
 
 <div class="container">
   <h2>Cajas </h2>
-  <p>Cajas del sistema , podemos pedir una caja , modificar y cargar una caja , generar etiquetas .</p>    
-               <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>        
+  <p>Las cajas pertenecientes a los sectores del sistema e ingresadas por los usuarios , van a estar a disposiciones de los sectores para realizar las busquedas de las cajas.</p>    
+                  
+
+
+               <form>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+
+    
   <table class="table">
     <thead>
       <tr>
@@ -60,12 +75,9 @@ if ($result->num_rows > 0) {
         <th><button type="button" class="btn btn-primary">Pedir</button></th>
         <th><button type="button" class="btn btn-info">Informacion</button></th>
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
+        <th><a  href="../views/delete_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
 
-        <!--<th><button type="button" class="btn btn-link">Link</button></th>
-        <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
-        <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
-       <th><a class="btn btn-primary" href="../views/add_user.php" role="button">Link</a></th> -->
-     
+       
 
       </tr>
      <?php
@@ -82,7 +94,7 @@ $conn->close();
 
   </table>
 
-
+<center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center> 
 </div>
 
 

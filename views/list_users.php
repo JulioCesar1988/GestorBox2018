@@ -24,8 +24,8 @@ if ($conn->connect_error) {
    <center> <th><a  href="../views/add_user.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
 
 <div class="container">
-  <h2>Categoris </h2>
-  <p>Categorias del sistema , las categorias pertenecen a un sector , son generadas por ellos , es necesario para generar el codigo de la caja  .</p>
+  <h2>Usuarios </h2>
+  <p>Los usuarios del sistema , pertenecen a un sector , su funcion es almacenar cajas , las cuales podran hacer pedidos o modificar su descipcion , .</p>
   <table class="table">
     <thead>
       <tr>
@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
   
         <th><button type="button" class="btn btn-info">Informacion</button></th>
          <th><a  href="../views/delete_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
-          <th><a  href="../views/delete_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+          <th><a  href="../views/edit_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
         <!--<th><button type="button" class="btn btn-link">Link</button></th>
         <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
         <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>

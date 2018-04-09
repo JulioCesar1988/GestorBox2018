@@ -25,7 +25,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">GestorBox</a>
+      <a class="navbar-brand" href="/gestorbox2018/index.php">GestorBox</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -41,8 +41,8 @@
        <li><a href="/gestorbox2018/views/estadisticas.php">Estadisticas</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Registrarse </a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+        <li><a href="/gestorbox2018/views/add_user.php"><span class="glyphicon glyphicon-user"></span> Registrarse </a></li>
+        <li><a href="/gestorbox2018/views/login.php"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
       </ul>
     </div>
   </div>

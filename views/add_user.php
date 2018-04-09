@@ -22,11 +22,32 @@
               <label>nombre</label>
               <input class="form-control" type="text" name="nombre" required><br>
             </div>
+
+            <!--
+ <div class="form-group">
+              <label>id_sector</label>
+              <input class="form-control" type="text" name="id_sector" required><br>
+            </div> -->
+
+<div class="form-group">
+  <label for="sel1">Sector</label>
+  <select class="form-control" id=id_sector name="id_sector" required ">
+    <option>Sistemas</option>
+    <option>Despacho</option>
+    <option>RRHH</option>
+    <option>Compras</option>
+  </select>
+</div>
+
+
+
+
+
             <div class="form-group">
               <label>Password</label>
               <input class="form-control" type="password" name="clave" required><br>
             </div>
-            <input type="submit" value="Submit">
+            <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
           </form>
         </div>
       </div>

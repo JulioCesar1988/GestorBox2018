@@ -12,16 +12,11 @@
           <form action="../controllers/create_caja.php" method="post">
 
     
-<!--
 
-<div class="form-group">
-  <label for="comment">Descripcion del Contenido:</label>
-  <textarea class="form-control" rows="5" id="descripcion"></textarea>
-</div> -->
 
 <div class="form-group">
               <label>descripcion</label>
-              <input class="form-control" type="text" name="descripcion" required><br>
+              <input class="form-control" type="textarea"  rows="5" name="descripcion" required><br>
             </div>
 
 

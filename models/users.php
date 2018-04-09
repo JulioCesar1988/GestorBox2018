@@ -23,15 +23,12 @@ class Users {
     return $query->fetchAll();
   }
 
-
    // funcion para dar de alta un usuario , gestorbox .
-  public function insert($email, $nombre, $clave) {
-    $query = $this->connection()->prepare("INSERT INTO usuario (email, nombre, clave) VALUES (?, ?, ? )");
-    $query->execute(array($email, $nombre, $clave));
+  public function insert($email, $nombre, $clave ,$id_sector) {
+    $query = $this->connection()->prepare("INSERT INTO usuario (email, nombre, clave ,id_sector) VALUES (?, ?, ?, ? )");
+    $query->execute(array($email, $nombre, $clave, $id_sector));
   
   }
-
-
 
 // Verificamos datos del usuario . 
  public function loginCorrect($email, $clave){
@@ -40,8 +37,6 @@ class Users {
 
     return $query->fetch();
   }
-
-
 
   public function search($search_name, $search_last_name, $search_blocked) {
     $query = $this->connection()->prepare("SELECT * FROM users WHERE (name LIKE ? AND last_name LIKE ? AND blocked = ?)");
@@ -55,8 +50,6 @@ class Users {
     return $query->rowCount();
   }
 
- 
-
   public function delete($email) {
       // borrar roles asociados
       $query = $this->connection()->prepare("SELECT id from users WHERE (email = ?)");
@@ -64,11 +57,10 @@ class Users {
 
   }
 
-  //public function update($email, $nombre, $ , $last_name, $password, $old_email, $roles) {
-   // $query = $this->connection()->prepare("UPDATE users SET email = ?, username = ?, name = ?, last_name = ?, password = ? WHERE (email = ?)");
-    //$query->execute(array($email, $username, $name, $last_name, $password, $old_email));
-    //$this->updateRoles($email, $roles);
-  //}
+  public function update($email, $nombre, $clave, $id_sector) {
+    $query = $this->connection()->prepare("UPDATE usuario SET email = ? , nombre = ? , clave = ?, id_sector = ? WHERE (email = ?)");
+    $query->execute(array($email, $nombre , $clave , $id_sector));
+  }
 
 
 

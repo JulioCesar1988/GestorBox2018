@@ -29,7 +29,8 @@ if ($conn->connect_error) {
 
 <div class="container">
   <h2>Categoris </h2>
-  <p>Categorias del sistema , las categorias pertenecen a un sector , son generadas por ellos , es necesario para generar el codigo de la caja  .</p>            
+  <p>Las categorias de los sectores son formas de clasificar la informacion que estan en las cajas , cada usuario de un sector
+  pueden generar sus categorias para clasificar informacion .</p>            
   <table class="table">
     <thead>
       <tr>

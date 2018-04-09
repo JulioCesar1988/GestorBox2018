@@ -27,8 +27,8 @@ if ($conn->connect_error) {
  <center><th><button type="button" class="btn btn-primary">agregar</button></th></center>
 
 <div class="container">
-  <h2>Categoris </h2>
-  <p>Categorias del sistema , las categorias pertenecen a un sector , son generadas por ellos , es necesario para generar el codigo de la caja  .</p>            
+  <h2>Sectores </h2>
+  <p>Los Usuarios al igual que las cajas pertecen a un sector , los son generados por el administrador .</p>            
   <table class="table">
     <thead>
       <tr>
@@ -56,12 +56,8 @@ if ($result->num_rows > 0) {
         <th><button type="button" class="btn btn-info">Informacion</button></th>
         <th><button type="button" class="btn btn-warning">Modificar</button></th>
         <th><button type="button" class="btn btn-danger">Eliminar</button></th>
-        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
-       <a href="#" class="btn btn-info" role="button">Link Button</a>
-        <!--<th><button type="button" class="btn btn-link">Link</button></th>
-        <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
-        <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
-       <th><a class="btn btn-primary" href="../views/add_user.php" role="button">Link</a></th> -->
+        
+       
 
 
       </tr>
