@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 
 
 
- <center><th><button type="button" class="btn btn-primary">agregar</button></th></center>
+ <center> <th><a  href="../views/add_sector.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
 
 <div class="container">
   <h2>Sectores </h2>
@@ -51,11 +51,11 @@ if ($result->num_rows > 0) {
         <td> <?php echo  $row["nombre"] ?> </td>
         <td><?php echo  $row["cod"] ?></td>
         <td><?php echo  $row["descripcion"] ?></td>
-        
-  
-        <th><button type="button" class="btn btn-info">Informacion</button></th>
-        <th><button type="button" class="btn btn-warning">Modificar</button></th>
-        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
+
+         <th><a  href="../views/show_sector.php?id=<?php echo  $row["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+         <th><a  href="../views/delete_sector.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+          <th><a  href="../views/edit_sector.php?id=<?php echo  $row["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+      
         
        
 

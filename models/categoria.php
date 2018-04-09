@@ -28,5 +28,12 @@ class Categoria {
   }
 
 
+    public function update($nombre, $cod, $descripcion , $id) {
+    $query = $this->connection()->prepare("UPDATE categoria SET  nombre = ? , cod = ? , descripcion = ? WHERE (id = ?) ");
+    $query->execute(array($nombre , $cod , $descripcion ,$id));
+  }
+
+
+
 }
 ?>

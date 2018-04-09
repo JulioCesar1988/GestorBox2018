@@ -1,25 +1,32 @@
+<!-- -->
 <?php
   require_once("../models/connection.php");
   require_once("../models/users.php");
-  require_once("../models/categoria.php");
+    require_once("../models/sector.php");
 
   $connection = new Connection();
   $connection = $connection->getConnection();
-  
+
   $nombre = $_POST['nombre'];
   $cod = $_POST['cod'];
   $descripcion = $_POST['descripcion'];
-     
-  $categoria = new Categoria();
+  $id = $_POST['id'];
+   
+   echo "nombre -> $nombre";
+   echo "cod -> $cod";
+   echo "descripcion -> $descripcion";
+   echo "ID -> $id";
+
+
+$sector = new Sector(); 
   if(!empty($nombre) && !empty($cod) && !empty($descripcion)) {
-    $categoria->insert($nombre, $cod,$descripcion);
-  
-    header('location:../views/list_categorias.php');
+    $sector->update($nombre, $cod,$descripcion,$id);
+    header('location:../views/list_sectores.php');
   } else {
     echo "00000000000000000000000000000 fracaso ";
-  }
+  } 
+
+
+
 
 ?>
-
-
-

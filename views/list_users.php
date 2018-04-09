@@ -52,14 +52,10 @@ if ($result->num_rows > 0) {
         <td><?php echo  $row["id_sector"] ?></td>
        
   
-        <th><button type="button" class="btn btn-info">Informacion</button></th>
+        <th><a  href="../views/show_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
          <th><a  href="../views/delete_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
           <th><a  href="../views/edit_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
-        <!--<th><button type="button" class="btn btn-link">Link</button></th>
-        <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
-        <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
-       <th><a class="btn btn-primary" href="../views/add_user.php" role="button">Link</a></th> -->
-
+      
 
 
       </tr>

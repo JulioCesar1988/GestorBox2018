@@ -49,36 +49,15 @@ $conn->close();
      <?php include '../views/navbar.php';?>
     <div class="row">
       <div class="col-md-offset-4 col-md-4" style="text-align: center;">
-        <h4>Modificar usuario</h2>
+        <h4>Información</h2>
         <div class="content">
-          <form action="../controllers/update_user.php" method="post">
-            <div class="form-group">
-              <label>Email</label>
-              <input class="form-control" type="email" name="email" value="<?php echo " $email"; ?>" required><br>
-            </div>
-            <div class="form-group">
-              <label>nombre</label>
-              <input class="form-control" type="text" name="nombre" value="<?php echo " $nombre"; ?>" required><br>
-            </div>
+ <ul class="list-group">
 
-             <div class="form-group">
-              <label>Sector</label>
-              <input class="form-control" type="text" name="id_sector" value="<?php echo " $id_sector"; ?>" required><br>
-            </div>
-
-              <div class="form-group">
-              <label>id</label>
-              <input class="form-control"    type="text"  name="id" value="<?php echo " $id"; ?>" required><br>
-            </div>
-
-
-            <div class="form-group">
-              <label>Password</label>
-              <input class="form-control" type="password" name="clave" value="<?php echo " $clave"; ?>"  required><br>
-            </div>
-
-            <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
-          </form>
+  <li class="list-group-item">Email :  <?php echo " $email"; ?> </li>
+  <li class="list-group-item">Nombre : <?php echo " $nombre"; ?> </li>
+  <li class="list-group-item"> Sector : <?php echo " $id_sector"; ?></li>
+  <li class="list-group-item">Clave : <?php echo " $clave"; ?></li>
+</ul>
         </div>
       </div>
     </div>

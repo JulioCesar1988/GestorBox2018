@@ -57,9 +57,10 @@ class Users {
 
   }
 
-  public function update($email, $nombre, $clave, $id_sector) {
-    $query = $this->connection()->prepare("UPDATE usuario SET email = ? , nombre = ? , clave = ?, id_sector = ? WHERE (email = ?)");
-    $query->execute(array($email, $nombre , $clave , $id_sector));
+  public function update($email, $nombre, $clave, $id_sector , $id) {
+    $query = $this->connection()->prepare("UPDATE usuario SET  email = ? , nombre = ? , clave = ?, id_sector = ? WHERE (id = ?) ");
+    $query->execute(array($email, $nombre , $clave , $id_sector,$id));
+
   }
 
 

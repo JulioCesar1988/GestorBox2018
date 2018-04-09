@@ -12,22 +12,19 @@ if ($conn->connect_error) {
 
 $id = $_GET['id'];
 
-$sql = "SELECT *  FROM usuario where id = $id ";
+$sql = "SELECT *  FROM categoria where id = $id ";
 $result = $conn->query($sql);
 
 $nombre = "null ";
-$email = "null ";
-$clave = "null";
-$id_sector = "null";
-
-
+$cod = "null ";
+$descripcion = "null";
+ 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       $nombre = $row["nombre"];
-      $email = $row["email"];
-      $clave = $row["clave"];
-      $id_sector = $row["id_sector"];       
+      $cod = $row["cod"];
+      $descripcion = $row["descripcion"];       
     }
 } else {
     echo "0 results";
@@ -49,34 +46,25 @@ $conn->close();
      <?php include '../views/navbar.php';?>
     <div class="row">
       <div class="col-md-offset-4 col-md-4" style="text-align: center;">
-        <h4>Modificar usuario</h2>
+        <h4>Modificar Categoria</h2>
         <div class="content">
-          <form action="../controllers/update_user.php" method="post">
-            <div class="form-group">
-              <label>Email</label>
-              <input class="form-control" type="email" name="email" value="<?php echo " $email"; ?>" required><br>
-            </div>
+          <form action="../controllers/update_categoria.php" method="post">
             <div class="form-group">
               <label>nombre</label>
               <input class="form-control" type="text" name="nombre" value="<?php echo " $nombre"; ?>" required><br>
             </div>
-
-             <div class="form-group">
-              <label>Sector</label>
-              <input class="form-control" type="text" name="id_sector" value="<?php echo " $id_sector"; ?>" required><br>
-            </div>
-
-              <div class="form-group">
-              <label>id</label>
-              <input class="form-control"    type="text"  name="id" value="<?php echo " $id"; ?>" required><br>
-            </div>
-
-
             <div class="form-group">
-              <label>Password</label>
-              <input class="form-control" type="password" name="clave" value="<?php echo " $clave"; ?>"  required><br>
+              <label>cod</label>
+              <input class="form-control" type="text" name="cod" value="<?php echo " $cod"; ?>" required><br>
             </div>
-
+             <div class="form-group">
+              <label>Descripcion</label>
+              <input class="form-control" type="text" name="descripcion" value="<?php echo " $descripcion"; ?>" required><br>
+            </div>
+             <div class="form-group">
+              <label>ID</label>
+              <input class="form-control" type="text" name="id" value="<?php echo " $id"; ?>" required><br>
+            </div>
             <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
           </form>
         </div>

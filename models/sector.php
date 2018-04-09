@@ -23,9 +23,16 @@ class Sector {
 
    public function listCant() {
     $query = $this->connection()->prepare("SELECT * FROM sector");
-    $query->execute();
+    $query->execute();  
     return $query->rowCount();
   }
+
+  public function update($nombre, $cod, $descripcion , $id) {
+    $query = $this->connection()->prepare("UPDATE sector SET  nombre = ? , cod = ? , descripcion = ? WHERE (id = ?) ");
+    $query->execute(array($nombre , $cod , $descripcion ,$id));
+  }
+
+
 
 
 }

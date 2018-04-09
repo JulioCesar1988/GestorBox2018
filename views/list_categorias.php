@@ -5,7 +5,6 @@
 </head>
 <body>
   <?php include '../views/navbar.php';?>
-
 <div class="container">
 </div>
 <?php
@@ -22,15 +21,10 @@ if ($conn->connect_error) {
 
  ?>
 
-
-
-
-
-
 <div class="container">
-  <h2>Categoris </h2>
+  <h2>Categorias </h2>
   <p>Las categorias de los sectores son formas de clasificar la informacion que estan en las cajas , cada usuario de un sector
-  pueden generar sus categorias para clasificar informacion .</p>            
+  pueden generar sus categorias para clasificar mejor informacion .</p>            
   <table class="table">
     <thead>
       <tr>
@@ -53,20 +47,12 @@ if ($result->num_rows > 0) {
         <td> <?php echo  $row["nombre"] ?> </td>
         <td><?php echo  $row["cod"] ?></td>
         <td><?php echo  $row["descripcion"] ?></td>
-        
-        <th><button type="button" class="btn btn-primary">agregar</button></th>
-        <th><button type="button" class="btn btn-info">Informacion</button></th>
-        <th><button type="button" class="btn btn-warning">Modificar</button></th>
-        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
-        <!--<th><button type="button" class="btn btn-link">Link</button></th>
-        <th><p> <a href="../views/add_caja.php">Agregar</a>? <br /> </p></th>
-        <th><p> <a href="../views/add_user.php"> </a> ? <br /> </p></th>
-       <th><a class="btn btn-primary" href="../views/add_user.php" role="button">Link</a></th> -->
-
+        <th><a  href="../views/show_categoria.php?id=<?php echo  $row["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+         <th><a  href="../views/delete_categoria.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+          <th><a  href="../views/edit_categoria.php?id=<?php echo  $row["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 
       </tr>
      <?php
-
 
     }
 } else {
@@ -74,24 +60,9 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
     </tbody>
-
   </table>
-
-
 </div>
-
-
-
-
-
-
-       <!-- echo "descripcion -> " . $row["descripcion"]. " pricintoA -> " . $row["precintoA"]. " precintoB ->  " . --> <!--$row["precintoB"]." Ubicacion -> " . $row["ubicacion"] .". Sector -> -> " . $row["id_sector"] ."  <br>"; -->
-
-
-
-
 
 </body>
 </html>

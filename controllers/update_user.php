@@ -9,14 +9,19 @@
   $nombre = $_POST['nombre'];
   $clave = $_POST['clave'];
   $id_sector = $_POST['id_sector'];
+  $id = $_POST['id'];
+  
   echo "Datos con los que vamos actualizar  ";
   echo " emails  -> $email ";
   echo "nombre  -> $nombre ";
   echo "clave -> $clave  ";
   echo "id_sector -> $id_sector ";
+  echo "id -> $id";
+
+  
 $users = new Users(); 
   if(!empty($email) && !empty($nombre) && !empty($clave)&& !empty($id_sector)) {
-    $users->update($email, $nombre,$clave,$id_sector);
+    $users->update($email, $nombre,$clave,$id_sector,$id);
     header('location:../views/list_users.php');
   } else {
     echo "00000000000000000000000000000 fracaso ";
