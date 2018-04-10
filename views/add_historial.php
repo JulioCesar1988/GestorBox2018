@@ -22,7 +22,7 @@
   <select class="form-control" name="id_usuario">
   <?php  foreach ($usuarios AS $u)
 {   ?>
- <option><?php echo "$u[email]"; ?></option>
+ <option value="<?php echo "$u[id]"; ?>"><?php echo "$u[email]"; ?></option>
 <?php } ?>
   </select>
 </div>
@@ -32,11 +32,9 @@
   <select class="form-control" name="id_caja">
       <?php  foreach ($cajas AS $c)
 {   ?>
-
-    <option><?php echo "$c[codigo]"; ?></option>
+    <option value="<?php echo "$c[id]"; ?> "><?php echo "$c[codigo]"; ?></option>
     <?php } ?>
   </select>
-  
 </div>
 
 

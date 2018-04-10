@@ -29,6 +29,7 @@
         <th>PrecintoB</th>
         <th>Ubicacion</th>
         <th>Sector</th>     
+        <th>Codigo</th>     
       </tr>
     </thead>
     <tbody>
@@ -40,10 +41,12 @@
         <td><?php echo  $c["precintoB"] ?></td>
         <td><?php echo  $c["ubicacion"] ?></td>
         <td><?php echo  $c["id_sector"] ?></td>
+        <td><?php echo  $c["codigo"] ?></td>
         <th><a href="../views/show_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
         <th><a  href="../views/delete_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
-
+        <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-default" role="button" >Etiqueta</a></th>
+        <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
   <?php } ?>
       </tr>
     </tbody>
