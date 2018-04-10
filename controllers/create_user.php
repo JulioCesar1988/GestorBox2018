@@ -1,6 +1,6 @@
 <?php
   require_once("../models/connection.php");
-  require_once("../models/users.php");
+  require_once("../models/user.php");
 
   $connection = new Connection();
   $connection = $connection->getConnection();
@@ -13,11 +13,12 @@
 
 
   echo "datos que llegan al controlador ";
-  echo "$email";
-  echo "$nombre";
-  echo "$clave";
+  echo "Email -> $email";
+  echo "Nombre -> $nombre";
+  echo "Clave -> $clave";
+  echo "Id Sector -> $id_sector";
   
-  $users = new Users();
+  $users = new User();
   if(!empty($email) && !empty($nombre) && !empty($clave) && !empty($id_sector) ) {
 
     //$email, $nombre, $clave, $id_sector

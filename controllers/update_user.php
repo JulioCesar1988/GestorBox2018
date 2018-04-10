@@ -1,10 +1,12 @@
 
-<!-- -->
+
 <?php
   require_once("../models/connection.php");
-  require_once("../models/users.php");
+  require_once("../models/user.php");
+  
   $connection = new Connection();
   $connection = $connection->getConnection();
+
   $email = $_POST['email'];
   $nombre = $_POST['nombre'];
   $clave = $_POST['clave'];
@@ -18,8 +20,8 @@
   echo "id_sector -> $id_sector ";
   echo "id -> $id";
 
-  
-$users = new Users(); 
+
+$users = new User(); 
   if(!empty($email) && !empty($nombre) && !empty($clave)&& !empty($id_sector)) {
     $users->update($email, $nombre,$clave,$id_sector,$id);
     header('location:../views/list_users.php');

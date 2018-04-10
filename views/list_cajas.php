@@ -1,3 +1,13 @@
+<?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/categoria.php");
+ require_once("../models/caja.php");
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ $cajas = Caja::listAll(); 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,47 +15,12 @@
 </head>
 <body>
   <?php include '../views/navbar.php';?>
-
 <div class="container">
 </div>
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gestorboxdb";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
- ?>
-
-
-
-
-
-
+   <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
 <div class="container">
-  <h2>Cajas </h2>
-  <p>Las cajas pertenecientes a los sectores del sistema e ingresadas por los usuarios , van a estar a disposiciones de los sectores para realizar las busquedas de las cajas.</p>    
-                  
-
-
-               <form>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search">
-    <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
-    </div>
-  </div>
-</form>
-
-
-    
+  <h2>Caja </h2>
+  <p> Listado de las casas del sistemas . (falta poner acciones a los botones )</p>
   <table class="table">
     <thead>
       <tr>
@@ -53,60 +28,26 @@ if ($conn->connect_error) {
         <th>PrecintoA</th>
         <th>PrecintoB</th>
         <th>Ubicacion</th>
-        <th>Sector</th>
-        
+        <th>Sector</th>     
       </tr>
     </thead>
     <tbody>
-         <?php
-$sql = "SELECT * FROM caja"; $result = $conn->query($sql);
-  ?>                     
-
-<?php
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {   ?>
+  <?php  foreach ($cajas AS $c )
+{   ?>
       <tr>
-        <td> <?php echo  $row["descripcion"] ?> </td>
-        <td><?php echo  $row["precintoA"] ?></td>
-        <td><?php echo  $row["precintoB"] ?></td>
-        <td><?php echo  $row["ubicacion"] ?></td>
-        <td><?php echo  $row["id_sector"] ?></td>
-        <th><button type="button" class="btn btn-primary">Pedir</button></th>
-        <th><button type="button" class="btn btn-info">Informacion</button></th>
-        <th><button type="button" class="btn btn-warning">Modificar</button></th>
-        <th><a  href="../views/delete_user.php?id=<?php echo  $row["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <td><?php echo  $c["descripcion"] ?></td>
+        <td><?php echo  $c["precintoA"] ?></td>
+        <td><?php echo  $c["precintoB"] ?></td>
+        <td><?php echo  $c["ubicacion"] ?></td>
+        <td><?php echo  $c["id_sector"] ?></td>
+        <th><a href="../views/show_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+        <th><a  href="../views/delete_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 
-       
-
+  <?php } ?>
       </tr>
-     <?php
-
-
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
-?>
-
     </tbody>
-
   </table>
-
-<center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center> 
 </div>
-
-
-
-
-
-
-       <!-- echo "descripcion -> " . $row["descripcion"]. " pricintoA -> " . $row["precintoA"]. " precintoB ->  " . --> <!--$row["precintoB"]." Ubicacion -> " . $row["ubicacion"] .". Sector -> -> " . $row["id_sector"] ."  <br>"; -->
-
-
-
-
-
 </body>
 </html>

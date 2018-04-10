@@ -1,3 +1,13 @@
+<?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/caja.php");
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ $usuarios = User::listAll();
+ $cajas = Caja::ListAll();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -7,29 +17,26 @@
         <h4>Agregar historial</h2>
         <div class="content">
           <form action="../controllers/create_historial.php" method="post">
-           
-          
-           
-
             <div class="form-group">
   <label for="sel1">Usuario:</label>
   <select class="form-control" name="id_usuario">
-    <option>jcontreras@millerbi.net</option>
-    <option>j@millerbi.net</option>
-    <option>q@millerbi.net</option>
-    <option>julio.unlp2010@gmail.com</option>
+  <?php  foreach ($usuarios AS $u)
+{   ?>
+ <option><?php echo "$u[email]"; ?></option>
+<?php } ?>
   </select>
 </div>
-
 
 <div class="form-group">
   <label for="sel1">Caja:</label>
   <select class="form-control" name="id_caja">
-    <option>OFTO234234231</option>
-    <option>OFTO234234232</option>
-    <option>OFTO234234233</option>
-    <option>OFTO234234234</option>
+      <?php  foreach ($cajas AS $c)
+{   ?>
+
+    <option><?php echo "$c[codigo]"; ?></option>
+    <?php } ?>
   </select>
+  
 </div>
 
 
@@ -41,20 +48,6 @@
   </select>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <input type="submit" value="Submit">
           </form>
         </div>
@@ -63,3 +56,34 @@
 
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                   
+
+
+
+
+
+    
+
+  
+
+     
+
+
+
+
+

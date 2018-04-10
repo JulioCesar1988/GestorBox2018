@@ -1,7 +1,7 @@
 <!-- -->
 <?php
   require_once("../models/connection.php");
-  require_once("../models/users.php");
+  require_once("../models/user.php");
   require_once("../models/sector.php");
   require_once("../models/categoria.php");
 

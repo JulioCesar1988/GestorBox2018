@@ -1,4 +1,18 @@
 <?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/caja.php");
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ $usuarios = User::listAll();
+ $sectores = Sector::ListAll();
+ ?>
+
+
+
+
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -61,11 +75,17 @@ $conn->close();
               <input class="form-control" type="text" name="nombre" value="<?php echo " $nombre"; ?>" required><br>
             </div>
 
-             <div class="form-group">
-              <label>Sector</label>
-              <input class="form-control" type="text" name="id_sector" value="<?php echo " $id_sector"; ?>" required><br>
-            </div>
-
+            
+<div class="form-group">
+  <label for="sel1">Sector:</label>
+  <select class="form-control" name="id_sector">
+      <?php  foreach ($sectores AS $s)
+{   ?>
+    <option value="<?php echo "$s[id]"; ?>"><?php echo "$s[nombre]"; ?></option>
+    <?php } ?>
+  </select>
+  
+</div>
               <div class="form-group">
               <label>id</label>
               <input class="form-control"    type="text"  name="id" value="<?php echo " $id"; ?>" required><br>

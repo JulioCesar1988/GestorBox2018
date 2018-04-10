@@ -5,6 +5,21 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+<?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/caja.php");
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ $usuarios = User::listAll();
+ $sectores = Sector::ListAll();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -23,20 +38,17 @@
               <input class="form-control" type="text" name="nombre" required><br>
             </div>
 
-            <!--
- <div class="form-group">
-              <label>id_sector</label>
-              <input class="form-control" type="text" name="id_sector" required><br>
-            </div> -->
+  
 
 <div class="form-group">
-  <label for="sel1">Sector</label>
-  <select class="form-control" id=id_sector name="id_sector" required ">
-    <option>Sistemas</option>
-    <option>Despacho</option>
-    <option>RRHH</option>
-    <option>Compras</option>
+  <label for="sel1">Sector:</label>
+  <select class="form-control" name="id_sector">
+      <?php  foreach ($sectores AS $s)
+{   ?>
+    <option value ="<?php echo "$s[id]"; ?> "><?php echo "$s[nombre]"; ?></option>
+    <?php } ?>
   </select>
+  
 </div>
 
 

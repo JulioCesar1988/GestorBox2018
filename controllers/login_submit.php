@@ -1,6 +1,6 @@
 <?php
   require_once("../models/connection.php");
-  require_once("../models/users.php");
+  require_once("../models/user.php");
 
   $email = $_POST['email'];
   $clave = $_POST['clave'];

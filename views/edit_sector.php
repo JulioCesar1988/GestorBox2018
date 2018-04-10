@@ -57,7 +57,6 @@ $conn->close();
               <label>cod</label>
               <input class="form-control" type="text" name="cod" value="<?php echo " $cod"; ?>" required><br>
             </div>
-
              <div class="form-group">
               <label>Descripcion</label>
               <input class="form-control" type="text" name="descripcion" value="<?php echo " $descripcion"; ?>" required><br>
