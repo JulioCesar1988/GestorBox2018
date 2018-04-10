@@ -15,8 +15,22 @@
 </head>
 <body>
   <?php include '../views/navbar.php';?>
+
+
+<center>
 <div class="container">
 </div>
+  <form class="navbar-form " action="/action_page.php">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form></center>
+
    <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
 <div class="container">
   <h2>Caja </h2>
