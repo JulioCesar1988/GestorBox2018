@@ -1,9 +1,17 @@
+<?php
+
+$id = $_GET['id'];
+
+ 
+
+?>
+
+<center><?php echo "$id"; ?> </center>
 
 <!DOCTYPE html>
 <html>
 <head>
   <title>Generar Códigos de Barras - Denisse Estrada</title>
-  <link rel="icon" href="http://denisseestrada.com/wp-content/uploads/2017/02/favicon.png" sizes="32x32"/>
   <meta charset="UTF-8">
 </head>
 <style>
@@ -29,20 +37,22 @@ button {
 </style>
 <body>
   <center>
-  <h2>Generar códigos de barra</h2>
-  <input type="text" id="data" placeholder="Ingresa un valor"><br>
-  <button type="button" id="generar_barcode">Generar código de barras</button><br>
+  
   <div id="imagen"></div>
   </center>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
   <script>
-    $("#generar_barcode").click(function() {
-    var data = $("#data").val();
-    $("#imagen").html('<br><img src="barcode\\barcode.php?text='+data+'&size=90&codetype=Code39&print=true"/>');
+    
+    var data = <?php echo "$id" ?>   
+    $("#imagen").html('<br><img src="../barcode/barcode.php?text='+<?php echo "$id" ?> +'&size=90&codetype=Code39&print=true"/>');
     $("#data").val('');
-    //$.post( "guardarImagen.php", { filepath: "codigosGenerados/"+data+".png", text:data } );
-    });
+    $.post( "guardarImagen.php", { filepath: "../codigosGenerados/"+data+".png", text:data } );
+    
   </script>
+
+  <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=40&text=<?php echo "$id" ?>"/> </center>
 </body>
 </html>
+
+<!-- http://davidscotttufts.com/2009/03/31/how-to-create-barcodes-in-php/ -->

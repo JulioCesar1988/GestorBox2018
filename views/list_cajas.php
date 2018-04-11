@@ -33,7 +33,7 @@ $(document).ready(function(){
 <center>
 <div class="container">
 </div>
-  <form class="navbar-form " action="/action_page.php">
+  <form class="navbar-form " action="../views/estadisticas.php">
   <div class="input-group">
     <input id="myInput"  type="text" class="form-control" placeholder="Search">
     <div class="input-group-btn">
@@ -53,7 +53,8 @@ $(document).ready(function(){
         <th>PrecintoB</th>
         <th>Ubicacion</th>
         <th>Sector</th>     
-        <th>Codigo</th>     
+        <th>Codigo</th>  
+        <th>Cod. Barra</th>   
       </tr>
     </thead>
     <tbody id="myTable" >
@@ -66,10 +67,11 @@ $(document).ready(function(){
         <td><?php echo  $c["ubicacion"] ?></td>
         <td><?php echo  $c["id_sector"] ?></td>
         <td><?php echo  $c["codigo"] ?></td>
+<td><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  $c["codigo"]?>&print=false" /></td>
         <th><a href="../views/show_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
         <th><a  href="../views/delete_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
-        <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-default" role="button" >Etiqueta</a></th>
+        <th><a  href="../views/etiqueta.php?id=<?php echo  $c["codigo"] ?>"  class="btn btn-default" role="button" >Etiqueta</a></th>
         <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
   <?php } ?>
       </tr>

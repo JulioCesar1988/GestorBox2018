@@ -1,75 +1,62 @@
-<!DOCTYPE html>
+<?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/categoria.php");
+ require_once("../models/caja.php");
+ require_once("../models/Historial.php");
+ 
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ 
+ $cajas = Caja::listCant(); 
+ $sectores = Sector::listCant(); 
+ $usuarios = User::listCant(); 
+ $Historiales = Historial::listCant(); 
+
+ 
+ 
+
+ ?>
+
+
+
+
+
+
+
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
+  <title>Estadisticas</title>
 </head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+<script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(dibujarGrafico);
+   function dibujarGrafico() {
+     // Tabla de datos: valores y etiquetas de la gráfica
+     var data = google.visualization.arrayToDataTable([
+       ['Texto', 'Valor numérico'],
+       ['Usuarios', <?php echo $usuarios ?>],
+       ['Sectores', <?php echo $sectores ?>],
+       ['Cajas', <?php echo $cajas ?>],
+       ['Historiales', <?php echo $Historiales ?>]    
+     ]);
+     var options = {
+       title: 'GestorBox datos estadisticos'
+     }
+     // Dibujar el gráfico
+     new google.visualization.ColumnChart( 
+     //ColumnChart sería el tipo de gráfico a dibujar
+       document.getElementById('GraficoGoogleChart-ejemplo-1')
+     ).draw(data, options);
+   }
+ </script> 
 <body>
-
-<h2>Filterable Table</h2>
-<p>Type something in the input field to search the table for first names, last names or emails:</p>  
-<input id="myInput" type="text" placeholder="Search..">
-<br><br>
-
-<table>
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody id="myTable">
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-    </tr>
-    <tr>
-      <td>Mary</td>
-      <td>Moe</td>
-      <td>mary@mail.com</td>
-    </tr>
-    <tr>
-      <td>July</td>
-      <td>Dooley</td>
-      <td>july@greatstuff.com</td>
-    </tr>
-    <tr>
-      <td>Anja</td>
-      <td>Ravendale</td>
-      <td>a_r@test.com</td>
-    </tr>
-  </tbody>
-</table>
-  
-<p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
-
+	<?php include '../views/navbar.php';?>
+<div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
+</div>
 </body>
 </html>
+
+
