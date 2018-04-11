@@ -12,6 +12,19 @@
 <html lang="en">
 <head>
   <title>GestorBox</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+ <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
 </head>
 <body>
   <?php include '../views/navbar.php';?>
@@ -22,15 +35,12 @@
 </div>
   <form class="navbar-form " action="/action_page.php">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search">
+    <input id="myInput"  type="text" class="form-control" placeholder="Search">
     <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
+      
     </div>
   </div>
 </form></center>
-
    <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
 <div class="container">
   <h2>Caja </h2>
@@ -46,7 +56,7 @@
         <th>Codigo</th>     
       </tr>
     </thead>
-    <tbody>
+    <tbody id="myTable" >
   <?php  foreach ($cajas AS $c )
 {   ?>
       <tr>
