@@ -36,9 +36,9 @@
         <td><?php echo  $u["email"] ?></td>
         <td><?php echo  $u["clave"] ?></td>
         <td><?php echo  $u["id_sector"]?></td>
-        <th><a href="../views/show_user.php?id=<?php echo  $u["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_user.php?id=<?php echo  $u["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
-        <th><a  href="../views/edit_user.php?id=<?php echo  $u["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+        <th><a href="../views/show_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+        <th><a  href="../views/delete_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/edit_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
        
   <?php } ?>
       </tr>

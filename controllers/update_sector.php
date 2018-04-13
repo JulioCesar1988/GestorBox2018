@@ -10,17 +10,17 @@
   $nombre = $_POST['nombre'];
   $cod = $_POST['cod'];
   $descripcion = $_POST['descripcion'];
-  $id = $_POST['id'];
+  $id_sector = $_POST['id_sector'];
    
    echo "nombre -> $nombre";
    echo "cod -> $cod";
    echo "descripcion -> $descripcion";
-   echo "ID -> $id";
+   echo "id_sector -> $id_sector";
 
 
 $sector = new Sector(); 
   if(!empty($nombre) && !empty($cod) && !empty($descripcion)) {
-    $sector->update($nombre, $cod,$descripcion,$id);
+    $sector->update($nombre, $cod,$descripcion,$id_sector);
     header('location:../views/list_sectores.php');
   } else {
     echo "00000000000000000000000000000 fracaso ";

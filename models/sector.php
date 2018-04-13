@@ -23,9 +23,9 @@ class Sector extends GestorBase {
     return $query->rowCount();
   }
 
-  public function update($nombre, $cod, $descripcion , $id) {
-    $query = Sector::connection()->prepare("UPDATE sector SET  nombre = ? , cod = ? , descripcion = ? WHERE (id = ?) ");
-    $query->execute(array($nombre , $cod , $descripcion ,$id));
+  public function update($nombre, $cod, $descripcion , $id_sector) {
+    $query = Sector::connection()->prepare("UPDATE sector SET  nombre = ? , cod = ? , descripcion = ? WHERE (id_sector = ?) ");
+    $query->execute(array($nombre , $cod , $descripcion ,$id_sector));
   }
 
 

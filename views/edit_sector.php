@@ -10,9 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_sector = $_GET['id_sector'];
 
-$sql = "SELECT *  FROM sector where id = $id ";
+$sql = "SELECT *  FROM sector where id_sector = $id_sector ";
 $result = $conn->query($sql);
 
 $nombre = "null ";
@@ -63,7 +63,7 @@ $conn->close();
             </div>
              <div class="form-group">
               <label>ID</label>
-              <input class="form-control" type="text" name="id" value="<?php echo " $id"; ?>" required><br>
+              <input class="form-control" type="text" name="id_sector" value="<?php echo " $id_sector"; ?>" required><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
           </form>

@@ -10,9 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_categoria = $_GET['id_categoria'];
 
-$sql = "SELECT *  FROM categoria where id = $id ";
+$sql = "SELECT *  FROM categoria where id_categoria = $id_categoria ";
 $result = $conn->query($sql);
 
 $nombre = "null ";

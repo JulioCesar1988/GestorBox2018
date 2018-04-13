@@ -10,9 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_sector = $_GET['id_sector'];
 
-$sql = "SELECT *  FROM sector where id = $id ";
+$sql = "SELECT *  FROM sector where id_sector = $id_sector ";
 $result = $conn->query($sql);
 
 $nombre = "null ";

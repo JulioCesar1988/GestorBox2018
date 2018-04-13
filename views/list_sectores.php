@@ -34,9 +34,9 @@
         <td><?php echo  $s["nombre"] ?></td>
         <td><?php echo  $s["cod"] ?></td>
         <td><?php echo  $s["descripcion"] ?></td>
-        <th><a href="../views/show_sector.php?id=<?php echo  $s["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_sector.php?id=<?php echo  $s["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
-        <th><a  href="../views/edit_sector.php?id=<?php echo  $s["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+        <th><a href="../views/show_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+        <th><a  href="../views/delete_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/edit_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
   <?php } ?>
       </tr>
     </tbody>

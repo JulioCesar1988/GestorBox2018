@@ -9,7 +9,7 @@ class User  extends GestorBase {
   }
 
   public function listAll() {
-    $query = User::connection()->prepare("SELECT * FROM usuario");
+    $query = User::connection()->prepare("SELECT *  FROM usuario ");
     $query->execute();
     return $query->fetchAll();
   }
@@ -45,9 +45,9 @@ class User  extends GestorBase {
 
   }
 
-  public function update($email, $nombre, $clave, $id_sector , $id) {
-    $query = User::connection()->prepare("UPDATE usuario SET  email = ? , nombre = ? , clave = ?, id_sector = ? WHERE (id = ?) ");
-    $query->execute(array($email, $nombre , $clave , $id_sector,$id));
+  public function update($email, $nombre, $clave, $id_sector , $id_usuario) {
+    $query = User::connection()->prepare("UPDATE usuario SET  email = ? , nombre = ? , clave = ?, id_sector = ? WHERE (id_usuario = ?) ");
+    $query->execute(array($email, $nombre , $clave , $id_sector,$id_usuario));
 
   }
 

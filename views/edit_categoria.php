@@ -10,9 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_categoria = $_GET['id_categoria'];
 
-$sql = "SELECT *  FROM categoria where id = $id ";
+$sql = "SELECT *  FROM categoria where id_categoria = $id_categoria ";
 $result = $conn->query($sql);
 
 $nombre = "null ";
@@ -63,7 +63,7 @@ $conn->close();
             </div>
              <div class="form-group">
               <label>ID</label>
-              <input class="form-control" type="text" name="id" value="<?php echo " $id"; ?>" required><br>
+              <input class="form-control" type="text" name="id_categoria" value="<?php echo " $id_categoria"; ?>" required><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
           </form>

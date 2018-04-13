@@ -35,9 +35,9 @@
         <td><?php echo  $c["nombre"] ?></td>
         <td><?php echo  $c["cod"] ?></td>
         <td><?php echo  $c["descripcion"] ?></td>
-        <th><a href="../views/show_categoria.php?id=<?php echo  $c["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_categoria.php?id=<?php echo  $c["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
-        <th><a  href="../views/edit_categoria.php?id=<?php echo  $c["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+        <th><a href="../views/show_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+        <th><a  href="../views/delete_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/edit_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
   <?php } ?>
       </tr>
     </tbody>

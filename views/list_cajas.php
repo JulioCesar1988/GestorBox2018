@@ -48,19 +48,22 @@ $(document).ready(function(){
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Descripcion</th>
         <th>PrecintoA</th>
         <th>PrecintoB</th>
         <th>Ubicacion</th>
         <th>Sector</th>     
         <th>Codigo</th>  
-        <th>Cod. Barra</th>   
+        <th>Barra</th>   
       </tr>
     </thead>
     <tbody id="myTable" >
   <?php  foreach ($cajas AS $c )
 {   ?>
       <tr>
+
+        <td><?php echo  $c["id"] ?></td>
         <td><?php echo  $c["descripcion"] ?></td>
         <td><?php echo  $c["precintoA"] ?></td>
         <td><?php echo  $c["precintoB"] ?></td>
@@ -72,7 +75,7 @@ $(document).ready(function(){
         <th><a  href="../views/delete_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
         <th><a  href="../views/etiqueta.php?id=<?php echo  $c["codigo"] ?>"  class="btn btn-default" role="button" >Etiqueta</a></th>
-        <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
+        <th><a  href="../controllers/PHPMailer.php?id=<?php echo $c["id"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
   <?php } ?>
       </tr>
     </tbody>

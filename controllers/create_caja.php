@@ -12,6 +12,7 @@
   $id_sector = $_POST['id_sector'];
   $ubicacion = $_POST['ubicacion'];
   $codigo = $_POST['codigo'];
+  $id_catetoria = $_POST['id_catetoria'];
 
 
 echo " Soy el controlador ";
@@ -21,11 +22,12 @@ echo "precintoB -> $precintoB";
 echo "IdDeSector -> $id_sector";
 echo "Ubicacion -> $ubicacion";
 echo "codigo -> $codigo";
+echo "IdCategoria -> $id_catetoria";
   
   $caja = new Caja();
   
   if(!empty($descripcion) && !empty($precintoA) && !empty($precintoB)) {
-    $caja->insert( $descripcion, $precintoA , $precintoB , $id_sector , $ubicacion ,$codigo);
+    $caja->insert( $descripcion, $precintoA , $precintoB , $id_sector , $ubicacion ,$codigo.$id_catetoria);
   
      header('location:../views/list_cajas.php');
     

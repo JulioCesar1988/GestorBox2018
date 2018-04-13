@@ -13,11 +13,11 @@ if ($conn->connect_error) {
 
 
 
-$id = $_GET['id'];
+$id_categoria = $_GET['id_categoria'];
 
-echo "$id";
+echo "$id_categoria";
 // sql to delete a record
-$sql = "DELETE FROM categoria WHERE id = $id";
+$sql = "DELETE FROM categoria WHERE id_categoria = $id_categoria";
 
 
 if ($conn->query($sql) === TRUE) {

@@ -24,9 +24,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_usuario = $_GET['id_usuario'];
 
-$sql = "SELECT *  FROM usuario where id = $id ";
+$sql = "SELECT *  FROM usuario where id_usuario = $id_usuario ";
 $result = $conn->query($sql);
 
 $nombre = "null ";
@@ -81,14 +81,14 @@ $conn->close();
   <select class="form-control" name="id_sector">
       <?php  foreach ($sectores AS $s)
 {   ?>
-    <option value="<?php echo "$s[id]"; ?>"><?php echo "$s[nombre]"; ?></option>
+    <option value="<?php echo "$s[id_sector]"; ?>"><?php echo "$s[nombre]"; ?></option>
     <?php } ?>
   </select>
   
 </div>
               <div class="form-group">
               <label>id</label>
-              <input class="form-control"    type="text"  name="id" value="<?php echo " $id"; ?>" required><br>
+              <input class="form-control"    type="text"  name="id_usuario" value="<?php echo " $id_usuario"; ?>" required><br>
             </div>
 
 

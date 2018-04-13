@@ -10,9 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_usuario = $_GET['id_usuario'];
 
-$sql = "SELECT *  FROM usuario where id = $id ";
+$sql = "SELECT *  FROM usuario where id_usuario = $id_usuario ";
 $result = $conn->query($sql);
 
 $nombre = "null ";
@@ -52,7 +52,6 @@ $conn->close();
         <h4>Información</h2>
         <div class="content">
  <ul class="list-group">
-
   <li class="list-group-item">Email :  <?php echo " $email"; ?> </li>
   <li class="list-group-item">Nombre : <?php echo " $nombre"; ?> </li>
   <li class="list-group-item"> Sector : <?php echo " $id_sector"; ?></li>
