@@ -15,7 +15,26 @@
   <?php include '../views/navbar.php';?>
 <div class="container">
 </div>
-   <center> <th><a  href="../views/add_user.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
+          
+       <?php if (isset($_SESSION['email'])){    
+           if ($_SESSION['rol'] != "archivador") { ?>
+                 <center> <th><a  href="../views/add_user.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
+
+
+<?php          } 
+           else { ?> 
+              <td><?php echo  " "; ?></td>
+<?php
+           } 
+        }?>
+
+
+
+
+
+
+
+
 <div class="container">
   <h2>Usuarios </h2>
   <p>Los usuarios del sistema , pertenecen a un sector , su funcion es almacenar cajas , las cuales podran hacer pedidos o modificar su descipcion , .</p>
@@ -36,9 +55,23 @@
         <td><?php echo  $u["email"] ?></td>
         <td><?php echo  $u["clave"] ?></td>
         <td><?php echo  $u["id_sector"]?></td>
-        <th><a href="../views/show_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+
+
+
+        
+            
+       <?php if (isset($_SESSION['email'])){    
+           if ($_SESSION['rol'] != "archivador") { ?>
+              <th><a href="../views/show_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
         <th><a  href="../views/delete_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+<?php          } 
+           else { ?> 
+              <td><?php echo  " "; ?></td>
+<?php
+           } 
+        }?>
+        
        
   <?php } ?>
       </tr>

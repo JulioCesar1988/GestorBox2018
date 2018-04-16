@@ -13,16 +13,15 @@ if ($conn->connect_error) {
 
 
 
-$id_historial = $_GET['id_historial'];
+$id_caja = $_GET['id_caja'];
 
-echo "$id_historial";
+echo "$id_caja";
 // sql to delete a record
-$sql = "DELETE FROM historial WHERE id_historial = $id_historial";
-
+$sql = "DELETE FROM caja WHERE id_caja = $id_caja";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record deleted successfully";
-    header('location:../views/list_historiales.php');
+    header('location:../views/list_cajas.php');
 } else {
     echo "Error deleting record: " . $conn->error;
 }

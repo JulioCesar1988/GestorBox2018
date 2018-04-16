@@ -10,16 +10,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$id = $_GET['id'];
+$id_caja = $_GET['id_caja'];
 
-$sql = "SELECT *  FROM caja where id = $id ";
+$sql = "SELECT *  FROM caja where id_caja = $id_caja";
 $result = $conn->query($sql);
-
-$codigo = "null ";
-$sector = "null ";
-$precintoA = "null";
-$precintoB = "null";
-$ubicacion ="null";
+    $codigo = "null ";
+    $sector = "null ";
+    $precintoA = "null";
+    $precintoB = "null";
+    $ubicacion ="null";
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -31,12 +30,16 @@ if ($result->num_rows > 0) {
       $ubicacion = $row["ubicacion"];
 
     }
- echo "codigo ->   $codigo";
- echo "sector ->  $sector";
- echo "precintoA ->   $precintoA";
- echo "precintoB ->   $precintoB";
- echo "Ubicacion ->   $ubicacion";
- echo "Ubicacion ->   $ubicacion";
+
+
+ echo "Datos encontrados vamos a tratar de enviarlos por correo ";
+
+ echo " codigo ->   $codigo";
+ echo " sector ->  $sector";
+ echo " precintoA ->   $precintoA";
+ echo " precintoB ->   $precintoB";
+ echo " Ubicacion ->   $ubicacion";
+ 
   
 } else {
     echo "0 results";
@@ -88,6 +91,6 @@ try {
     //echo 'Message has been sent';
     header('location:../views/list_cajas.php');
 } catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+    echo 'No se pudo enviar ', $mail->ErrorInfo;
 } 
 

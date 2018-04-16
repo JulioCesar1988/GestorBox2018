@@ -25,7 +25,8 @@
       <tr>
         <th>usuario</th>
         <th>codigo</th>
-        <th>estado</th>     
+        <th>estado</th>
+        <th>cod</th>
       </tr>
     </thead>
     <tbody>
@@ -35,9 +36,11 @@
         <td><?php echo  $h["id_usuario"] ?></td>
         <td><?php echo  $h["id_caja"] ?></td>
         <td><?php echo  $h["estado"] ?></td>
-        <th><a href="../views/show_historial.php?id=<?php echo  $s["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_historial.php?id=<?php echo  $s["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
-        <th><a  href="../views/edit_historial.php?id=<?php echo  $s["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+        <td><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  $h["codigo"]?>&print=false" /></td>
+        <th><a href="../views/show_historial.php?id_historial=<?php echo  $h["id_historial"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+        <th><a  href="../views/delete_historial.php?id_historial=<?php echo  $h["id_historial"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/edit_historial.php?id_historial=<?php echo  $h["id_historial"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+  
   <?php } ?>
       </tr>
     </tbody>

@@ -9,7 +9,7 @@ class User  extends GestorBase {
   }
 
   public function listAll() {
-    $query = User::connection()->prepare("SELECT *  FROM usuario ");
+    $query = User::connection()->prepare("SELECT usuario.nombre,usuario.email,usuario.clave,usuario.id_usuario, sector.nombre as id_sector FROM usuario inner join sector on (usuario.id_sector = sector.id_sector) ");
     $query->execute();
     return $query->fetchAll();
   }
@@ -23,7 +23,6 @@ class User  extends GestorBase {
  public function loginCorrect($email, $clave){
     $query = User::connection()->prepare("SELECT * FROM usuario WHERE (email = ? and clave = ?)");
     $query->execute(array($email, $clave));
-
     return $query->fetch();
   }
 

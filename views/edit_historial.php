@@ -8,6 +8,37 @@
  $usuarios = User::listAll();
  $cajas = Caja::ListAll();
  ?>
+
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gestorboxdb";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$id_historial = $_GET['id_historial'];
+$sql = "SELECT *  FROM historial where id_historial = $id_historial ";
+$result = $conn->query($sql);
+$id_usuario = "null ";
+$id_caja = "null ";
+$estado = "null";
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      $id_usuario = $row["id_usuario"];
+      $id_caja = $row["id_caja"];
+      $estado = $row["estado"];       
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -26,7 +57,6 @@
 <?php } ?>
   </select>
 </div>
-
 <div class="form-group">
   <label for="sel1">Caja:</label>
   <select class="form-control" name="id_caja">
@@ -40,7 +70,7 @@
 
 <div class="form-group">
   <label for="sel1">Estado:</label>
-  <select class="form-control" name="estado">
+  <select class="form-control" name="estado" >
     <option>Pedido</option>
     <option>Entrega</option>
   </select>
@@ -54,34 +84,5 @@
 
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-                   
-
-
-
-
-
-    
-
-  
-
-     
-
-
-
 
 

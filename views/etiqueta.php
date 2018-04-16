@@ -1,13 +1,7 @@
 <?php
-
 $id = $_GET['id'];
-
- 
-
 ?>
-
 <center><?php echo "$id"; ?> </center>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,13 +38,12 @@ button {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
   <script>
     
-    var data = <?php echo "$id" ?>   
-    $("#imagen").html('<br><img src="../barcode/barcode.php?text='+<?php echo "$id" ?> +'&size=90&codetype=Code39&print=true"/>');
+    var data = "<?php echo "$id" ?>";   
+    $("#imagen").html('<br><img src="../barcode/barcode.php?text=<?php echo "$id" ?>&size=90&codetype=Code128&print=true"/>');
     $("#data").val('');
-    $.post( "guardarImagen.php", { filepath: "../codigosGenerados/"+data+".png", text:data } );
+    $.post( "../views/guardarImagen.php", { filepath: "../codigosGenerados/"+data+".png", text:data } );
     
   </script>
-
   <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=40&text=<?php echo "$id" ?>"/> </center>
 </body>
 </html>

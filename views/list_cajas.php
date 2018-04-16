@@ -13,7 +13,6 @@
 <head>
   <title>GestorBox</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- 
  <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -28,8 +27,6 @@ $(document).ready(function(){
 </head>
 <body>
   <?php include '../views/navbar.php';?>
-
-
 <center>
 <div class="container">
 </div>
@@ -37,14 +34,52 @@ $(document).ready(function(){
   <div class="input-group">
     <input id="myInput"  type="text" class="form-control" placeholder="Search">
     <div class="input-group-btn">
-      
     </div>
   </div>
 </form></center>
-   <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
+
+<center>
+
+
+
+ 
+
+
+  <?php
+     
+     // si existe una sesion 
+    if (isset($_SESSION['email'])){ 
+
+     if ($_SESSION['rol'] == "archivador"){
+              echo "Es Archivador - Acciones de Archivador ";
+         }  else {
+             if (($_SESSION['rol'] == "admin") || ($_SESSION['rol'] == "jefe")) {
+              echo "Es Administrador - Acciones de Administrador";
+
+             ?>
+             
+             <!--es administrador puede agregar cajas  -->
+             <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
+          <?php 
+
+         }else
+          
+          echo "es otro perfil ";  }  
+
+                         }else {echo "No existe sesion";}
+
+
+
+          ?>
+
+
+
+
+</center>
+
 <div class="container">
   <h2>Caja </h2>
-  <p> Listado de las casas del sistemas . (falta poner acciones a los botones )</p>
+  <p></p>
   <table class="table">
     <thead>
       <tr>
@@ -62,20 +97,48 @@ $(document).ready(function(){
   <?php  foreach ($cajas AS $c )
 {   ?>
       <tr>
+        <td><?php echo  $c["id_caja"] ?></td>
 
-        <td><?php echo  $c["id"] ?></td>
-        <td><?php echo  $c["descripcion"] ?></td>
+        
+            
+       <?php if (isset($_SESSION['email'])){    
+           if ($_SESSION['rol'] != "archivador") { ?>
+              <td><?php echo  $c["descripcion"] ?></td>
+<?php          } 
+           else { ?> 
+              <td><?php echo  " "; ?></td>
+<?php
+           } 
+        }?>
         <td><?php echo  $c["precintoA"] ?></td>
         <td><?php echo  $c["precintoB"] ?></td>
         <td><?php echo  $c["ubicacion"] ?></td>
         <td><?php echo  $c["id_sector"] ?></td>
         <td><?php echo  $c["codigo"] ?></td>
-<td><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  $c["codigo"]?>&print=false" /></td>
-        <th><a href="../views/show_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
-        <th><a  href="../views/edit_caja.php?id=<?php echo  $c["id"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+        <td><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  $c["codigo"]?>&print=false" /></td>
+        
+
+        
+        <?php if (isset($_SESSION['email'])){    
+           if ($_SESSION['rol'] != "archivador") { ?>
+              <th><a  href="../views/delete_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-danger" role="button" >Eliminar</a>
+              </th>
+               <th><a  href="../controllers/PHPMailer.php?id_caja=<?php echo $c["id_caja"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
+                <th><a href="../views/show_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+
+<?php          } 
+           else { ?> 
+              <td><?php echo  " "; ?></td>
+<?php
+           } 
+        }?>
+
+        <th><a  href="../views/edit_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
         <th><a  href="../views/etiqueta.php?id=<?php echo  $c["codigo"] ?>"  class="btn btn-default" role="button" >Etiqueta</a></th>
-        <th><a  href="../controllers/PHPMailer.php?id=<?php echo $c["id"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
+       
+
+
+
   <?php } ?>
       </tr>
     </tbody>
