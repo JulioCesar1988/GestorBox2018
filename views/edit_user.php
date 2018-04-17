@@ -33,6 +33,7 @@ $nombre = "null ";
 $email = "null ";
 $clave = "null";
 $id_sector = "null";
+$rol = "null";
 
 
 if ($result->num_rows > 0) {
@@ -41,7 +42,8 @@ if ($result->num_rows > 0) {
       $nombre = $row["nombre"];
       $email = $row["email"];
       $clave = $row["clave"];
-      $id_sector = $row["id_sector"];       
+      $id_sector = $row["id_sector"];
+      $rol = $row["rol"];       
     }
 } else {
     echo "0 results";
@@ -74,6 +76,19 @@ $conn->close();
               <label>nombre</label>
               <input class="form-control" type="text" name="nombre" value="<?php echo " $nombre"; ?>" required><br>
             </div>
+
+
+
+                                    <div class="form-group">
+  <label for="sel1">Rol</label>
+  <select class="form-control" name="rol">
+      
+    <option value ="admin">Administrador</option>
+    <option value ="jefe">Jefe de Sector</option>
+    <option value ="aux">Auxiliar</option>
+    <option value ="blo">Bloquear</option>
+  
+  </select>
 
             
 <div class="form-group">

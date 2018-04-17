@@ -9,14 +9,14 @@ class User  extends GestorBase {
   }
 
   public function listAll() {
-    $query = User::connection()->prepare("SELECT usuario.nombre,usuario.email,usuario.clave,usuario.id_usuario, sector.nombre as id_sector FROM usuario inner join sector on (usuario.id_sector = sector.id_sector) ");
+    $query = User::connection()->prepare("SELECT usuario.nombre,usuario.email,usuario.clave,usuario.id_usuario, sector.nombre as id_sector,usuario.rol FROM usuario inner join sector on (usuario.id_sector = sector.id_sector) ");
     $query->execute();
     return $query->fetchAll();
   }
 
-  public function insert($email, $nombre, $clave ,$id_sector) {
-    $query = User::connection()->prepare("INSERT INTO usuario (email, nombre, clave ,id_sector) VALUES (?, ?, ?, ? )");
-    $query->execute(array($email, $nombre, $clave, $id_sector));
+  public function insert($email, $nombre, $clave ,$id_sector,$rol) {
+    $query = User::connection()->prepare("INSERT INTO usuario (email, nombre, clave ,id_sector,rol) VALUES (?, ?, ?, ?,? )");
+    $query->execute(array($email, $nombre, $clave, $id_sector,$rol));
   
   }
 
@@ -44,9 +44,9 @@ class User  extends GestorBase {
 
   }
 
-  public function update($email, $nombre, $clave, $id_sector , $id_usuario) {
-    $query = User::connection()->prepare("UPDATE usuario SET  email = ? , nombre = ? , clave = ?, id_sector = ? WHERE (id_usuario = ?) ");
-    $query->execute(array($email, $nombre , $clave , $id_sector,$id_usuario));
+  public function update($email, $nombre, $clave, $id_sector , $id_usuario,$rol) {
+    $query = User::connection()->prepare("UPDATE usuario SET  email = ? , nombre = ? , clave = ?, id_sector = ? ,rol = ? WHERE (id_usuario = ?) ");
+    $query->execute(array($email, $nombre , $clave , $id_sector,$id_usuario,$rol));
 
   }
 

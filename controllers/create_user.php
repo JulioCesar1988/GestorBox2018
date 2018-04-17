@@ -9,6 +9,7 @@
   $nombre = $_POST['nombre'];
   $clave = $_POST['clave'];
   $id_sector = $_POST['id_sector'];
+  $rol = $_POST['rol'];
 
 
 
@@ -17,12 +18,13 @@
   echo "Nombre -> $nombre";
   echo "Clave -> $clave";
   echo "Id Sector -> $id_sector";
+  echo "rol -> $rol";
   
   $users = new User();
   if(!empty($email) && !empty($nombre) && !empty($clave) && !empty($id_sector) ) {
 
     //$email, $nombre, $clave, $id_sector
-    $users->insert($email, $nombre,$clave,$id_sector);
+    $users->insert($email, $nombre,$clave,$id_sector,$rol);
   
     header('location:../views/list_users.php');
   } else {

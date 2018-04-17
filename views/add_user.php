@@ -43,6 +43,20 @@
               <input class="form-control" type="text" name="nombre" required><br>
             </div>
 
+
+                        <div class="form-group">
+  <label for="sel1">Rol</label>
+  <select class="form-control" name="rol">
+      
+    <option value ="admin">Administrador</option>
+    <option value ="jefe">Jefe de Sector</option>
+    <option value ="aux">Auxiliar</option>
+    <option value ="blo">Bloquear</option>
+  
+  </select>
+  
+</div>
+
             <div class="form-group">
               <label>Password</label>
               <input class="form-control" type="password" name="clave" required><br>

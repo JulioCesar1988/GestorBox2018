@@ -15,7 +15,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>GestorBox</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,7 +37,7 @@ session_start();
       <ul class="nav navbar-nav">
         
        
-        </li>
+       </li>
       <li><a href="/gestorbox2018/views/list_users.php">Usuario</a></li>
       <li><a href="/gestorbox2018/views/list_sectores.php">Sector</a></li>
       <li><a href="/gestorbox2018/views/list_categorias.php">Categoria</a></li>

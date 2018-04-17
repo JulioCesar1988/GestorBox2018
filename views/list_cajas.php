@@ -110,6 +110,10 @@ $(document).ready(function(){
 <?php
            } 
         }?>
+
+
+
+        
         <td><?php echo  $c["precintoA"] ?></td>
         <td><?php echo  $c["precintoB"] ?></td>
         <td><?php echo  $c["ubicacion"] ?></td>

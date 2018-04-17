@@ -44,7 +44,8 @@
         <th>nombre</th>
         <th>email</th>
         <th>clave</th>
-        <th>Sector</th>     
+        <th>Sector</th>
+        <th>rol</th>     
       </tr>
     </thead>
     <tbody>
@@ -55,6 +56,7 @@
         <td><?php echo  $u["email"] ?></td>
         <td><?php echo  $u["clave"] ?></td>
         <td><?php echo  $u["id_sector"]?></td>
+        <td><?php echo  $u["rol"]?></td>
 
 
 
