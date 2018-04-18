@@ -49,17 +49,18 @@ Ingrese una descripcion acorde al contenido del archivo , recuerde que esto ayud
             </div>
 
             
+<!--
 <div class="form-group">
   <label for="sel1">Sector:</label>
   <select class="form-control" name="id_sector">
-      <?php  foreach ($sectores AS $s)
+      <?php // foreach ($sectores AS $s)
 {   ?>
-    <option value=<?php echo "$s[id_sector]"; ?> ><?php echo "$s[nombre]"; ?></option>
+    <option value=<?php// echo "$s[id_sector]"; ?> ><?php //echo "$s[nombre]"; ?></option>
     <?php } ?>
   </select>
 </div>
  
-
+-->
 
 
 <div class="form-group">
@@ -77,11 +78,11 @@ Ingrese una descripcion acorde al contenido del archivo , recuerde que esto ayud
 
 <div class="form-group">
               <label>ubicacion</label>
-              <input class="form-control" type="text" name="ubicacion" disabled><br>
+              <input class="form-control" type="text" name="ubicacion" ><br>
             </div>
 <div class="form-group">
               <label>codigo</label>
-              <input class="form-control" type="text" name="codigo" disabled><br>
+              <input class="form-control" type="text" name="codigo" ><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button"  value="Agregar caja">  
           </form>

@@ -19,6 +19,11 @@
   
 </div>
 
+ <div class="page-header">
+ 
+  <center><h1>GestorBox<small> Sistema de archivos</small> </h1></center>
+</div>
+
 <center><img src="imagen/fondo.jpg" class="img-rounded" alt="Cinque Terre"></center>
 
 </body>

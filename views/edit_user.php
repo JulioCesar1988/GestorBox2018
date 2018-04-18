@@ -9,9 +9,6 @@
  $sectores = Sector::ListAll();
  ?>
 
-
-
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -84,9 +81,9 @@ $conn->close();
   <select class="form-control" name="rol">
       
     <option value ="admin">Administrador</option>
-    <option value ="jefe">Jefe de Sector</option>
-    <option value ="aux">Auxiliar</option>
-    <option value ="blo">Bloquear</option>
+    <option value ="jefe">Encargado</option>
+    <option value ="archivador">Archivador</option>
+    <option value ="Bloqueado">Bloquear</option>
   
   </select>
 

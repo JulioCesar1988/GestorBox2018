@@ -21,11 +21,14 @@
     $_SESSION['clave'] = $clave;
     $_SESSION['id_sector'] = $row['id_sector'];
     $_SESSION['rol'] = $row['rol'];
+    $_SESSION['id_usuario'] = $row['id_usuario'];
     
     echo $_SESSION['email'];
     echo $_SESSION['clave'];
     echo $_SESSION['id_sector'];
     echo $_SESSION['rol'];
+    echo $_SESSION['id_usuario'];
+    
 
     header('location:/gestorbox2018/index.php');
 

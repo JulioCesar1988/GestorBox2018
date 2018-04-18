@@ -9,7 +9,7 @@
   $nombre = $_POST['nombre'];
   $cod = $_POST['cod'];
   $descripcion = $_POST['descripcion'];
-  $id_sector = 20;     
+  $id_sector = $_SESSION['id_sector'];     
   
   echo "nombre -> $nombre";
 

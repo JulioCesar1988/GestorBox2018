@@ -44,9 +44,9 @@
   <?php  foreach ($sectores AS $s)
 {   ?>
       <tr>
-        <td><?php echo  $s["nombre"] ?></td>
+        <td><?php echo  $s["nombre"]?></td>
         <td><?php echo  $s["cod"] ?></td>
-        <td><?php echo  $s["descripcion"] ?></td>
+        <td><?php echo  $s["descripcion"]?></td>
 
 <?php if (isset($_SESSION['email'])){    
            if ($_SESSION['rol'] != "archivador") { ?>

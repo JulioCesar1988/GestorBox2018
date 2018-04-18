@@ -35,6 +35,8 @@ button {
   <div id="imagen"></div>
   </center>
 
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
   <script>
     
@@ -45,6 +47,11 @@ button {
     
   </script>
   <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=40&text=<?php echo "$id" ?>"/> </center>
+
+
+
+
+
 </body>
 </html>
 

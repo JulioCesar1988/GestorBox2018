@@ -31,7 +31,7 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/gestorbox2018/index.php">GestorBox</a>
+      <a class="navbar-brand" href="/gestorbox2018/index.php">GestorBox</a><img src="/gestorbox2018/imagen/fondo.jpg" alt="Mountain View" width="40" height="30">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">

@@ -1,14 +1,38 @@
+
+
+
 <?php
 
+session_start();
 include_once "gestor_base.php";
 
 class Categoria extends GestorBase  {
 
+
+
+// dependiendo del perfil , tengo que retornar la categoria de su sector.  
   public function listAll() {
-    $query = Categoria::connection()->prepare("SELECT * FROM categoria");
+    
+
+
+    $mi_sector = $_SESSION['id_sector'];
+    echo 'valor de la categoria de mi sesion -> '.$mi_sector;
+    $query = Categoria::connection()->prepare("SELECT * FROM categoria where ( id_sector = $mi_sector )");
+    $query->execute();
+    return $query->fetchAll();
+
+  }
+
+
+
+// para obtener el codigo de la categoria 
+public function CodCategoria($elemento) {
+    $query = Categoria::connection()->prepare("SELECT * FROM categoria where id_categoria = $elemento");
     $query->execute();
     return $query->fetchAll();
   }
+
+
  
  
   public function insert($nombre, $cod, $descripcion ,$id_sector ) {

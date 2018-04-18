@@ -31,7 +31,6 @@ if ($result->num_rows > 0) {
 
     }
 
-
  echo "Datos encontrados vamos a tratar de enviarlos por correo ";
 
  echo " codigo ->   $codigo";
@@ -62,16 +61,22 @@ try {
     //Server settings
     $mail->SMTPDebug = 0;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;            // Enable SMTP authentication
-    $mail->SMTPSecure = false;                            
-    $mail->Username = 'gestorbox2018@gmail.com';                 // SMTP username
-    $mail->Password = 'millerBI.1';                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
     $mail->Port = 587;                                    // TCP port to connect to
-    //Recipients
-    $mail->setFrom('gestorbox2018@gmail.com', 'gestorbox2018');
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    //$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;            // Enable SMTP authentication
+    $mail->Username = 'noreply@millerbi.net';                 // SMTP username
+    $mail->Password = 'nor.mbi2017';                           // SMTP password
+    $mail->setFrom('noreply@millerbi.net', 'gestorbox2018');
     $mail->addAddress('jcontreras@millerbi.net', 'gestorbox2018');     // Add a recipient
+    $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
     //$mail->addAddress('lmiaton@millerbi.net', 'gestorbox2018'); 
     //$mail->addAddress('eguadarrama@millerbi.net');
     //$mail->addAddress('jcontreras@millerbi.net');               // Name is optional
@@ -87,7 +92,13 @@ try {
     $datos = '<center> <h2>Se Genero un pedido de caja</h2> <br>'. '<p> Codigo de caja :</p> '.$codigo.'<br><p> sector : </p>'.$sector.'<br><p> precintoA : </p>'.$precintoA.'<br><p> precintoB :</p>'.$precintoB .' <p><br> Ubicacion :</p>'.$ubicacion.'</center> <br>' ;   
     $mail->Body    =  $datos; 
     $mail->AltBody = 'aaa ';
-    $mail->send();
+
+    if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}
     //echo 'Message has been sent';
     header('location:../views/list_cajas.php');
 } catch (Exception $e) {

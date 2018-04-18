@@ -32,22 +32,24 @@ class User  extends GestorBase {
     $users = $query->fetchAll();
   }
 
+ // 
   public function listCant() {
     $query = User::connection()->prepare("SELECT * FROM usuario");
     $query->execute();
-    return $query->rowCount();
+    return nt();
   }
 
+// Eliminacion de usuario dado email 
   public function delete($email) {
       $query = User::connection()->prepare("SELECT id from users WHERE (email = ?)");
       $query->execute(array($email));
 
   }
 
-  public function update($email, $nombre, $clave, $id_sector , $id_usuario,$rol) {
-    $query = User::connection()->prepare("UPDATE usuario SET  email = ? , nombre = ? , clave = ?, id_sector = ? ,rol = ? WHERE (id_usuario = ?) ");
-    $query->execute(array($email, $nombre , $clave , $id_sector,$id_usuario,$rol));
-
+// modificacion del usuario 
+  public function update($email, $nombre, $clave, $id_sector , $id_usuario , $rol) {
+    $query = User::connection()->prepare("UPDATE usuario SET  email = ?, nombre = ?,clave = ?,id_sector = ?,rol = ? where (id_usuario = ?) ");
+    $query->execute(array($email , $nombre , $clave , $id_sector  , $rol  , $id_usuario));
   }
 
 }

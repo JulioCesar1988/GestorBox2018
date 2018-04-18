@@ -9,6 +9,16 @@ class Sector extends GestorBase {
     $query->execute();
     return $query->fetchAll();
   }
+
+
+
+   static public function CodSector($busco) {
+     $query = Sector::connection()->prepare("SELECT *  FROM sector where id_sector = $busco ");
+     $query->execute();
+    return $query->fetchAll();
+  }
+
+
  
  
   public function insert($nombre, $cod, $descripcion ) {
@@ -16,6 +26,9 @@ class Sector extends GestorBase {
     $query->execute(array($nombre, $cod, $descripcion ));
   
   }
+
+
+
 
    public function listCant() {
     $query = Sector::connection()->prepare("SELECT * FROM sector");
