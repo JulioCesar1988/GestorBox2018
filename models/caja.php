@@ -3,6 +3,7 @@
  require_once("../models/sector.php");
  require_once("../models/caja.php");
  require_once("../models/categoria.php");
+ include_once ("../include/params.php");
  $connection = new Connection(); 
  $connection = $connection->getConnection();  
 

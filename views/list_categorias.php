@@ -39,7 +39,7 @@
 
 <div class="container">
   <h2>Categorias </h2>
-  <p>Categorias .</p>
+  <p>Las categorias son una forma en la que usted puede clasificar la informacion de su sector , recuerde que tiene que tener un nombre y un codigo de un solo caracter.</p>
   <table class="table">
     <thead>
       <tr>

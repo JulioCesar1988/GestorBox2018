@@ -10,6 +10,7 @@
 <?php
 
 include_once "gestor_base.php";
+include_once "../include/params.php";
 
 class Categoria extends GestorBase  {
 

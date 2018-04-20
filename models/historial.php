@@ -1,6 +1,7 @@
 <?php
 include_once "gestor_base.php";
 include_once ("../models/historial.php");
+include_once "../include/params.php";
 class Historial extends GestorBase {
   public function listAll() {
      session_start();

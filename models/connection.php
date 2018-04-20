@@ -1,9 +1,15 @@
+
+
+
 <?php
+include_once ("../include/params.php");
 class Connection {
   private $connection;
   function __construct(){
     try {
-      $con = new PDO("mysql:host=localhost;dbname=gestorboxdb","root","");
+  
+      $con = new PDO("mysql:host=".Params::$DB_Host.';'."dbname=".Params::$DB_nombre, Params::$DB_usuario,Params::$DB_clave);
+      
       $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->connection = $con;
     } catch (PDOException $e) {

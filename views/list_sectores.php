@@ -37,21 +37,20 @@
       <tr>
         <th>nombre</th>
         <th>cod</th>
-        <th>descripcion</th>     
+         
       </tr>
     </thead>
     <tbody>
-  <?php  foreach ($sectores AS $s)
-{   ?>
+  <?php  foreach ($sectores AS $s) {   ?>
       <tr>
         <td><?php echo  $s["nombre"]?></td>
         <td><?php echo  $s["cod"] ?></td>
-        <td><?php echo  $s["descripcion"]?></td>
+     
 
 <?php if (isset($_SESSION['email'])){    
            if ($_SESSION['rol'] != "archivador") { ?>
                  
-   <  <th><a href="../views/show_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+     <th><a href="../views/show_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
         <th><a  href="../views/delete_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 
