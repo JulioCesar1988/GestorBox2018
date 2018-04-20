@@ -12,12 +12,6 @@
   $descripcion = $_POST['descripcion'];
   $id_sector = $_POST['id_sector'];
    
-   echo "nombre -> $nombre";
-   echo "cod -> $cod";
-   echo "descripcion -> $descripcion";
-   echo "id_sector -> $id_sector";
-
-
 $sector = new Sector(); 
   if(!empty($nombre) && !empty($cod) && !empty($descripcion)) {
     $sector->update($nombre, $cod,$descripcion,$id_sector);

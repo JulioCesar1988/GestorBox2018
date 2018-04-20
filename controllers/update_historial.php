@@ -1,29 +1,27 @@
 <?php
   require_once("../models/connection.php");
   require_once("../models/user.php");
-  require_once("../models/caja.php");
   require_once("../models/sector.php");
-   require_once("../models/historial.php");
+  require_once("../models/historial.php");
 
   $connection = new Connection();
   $connection = $connection->getConnection();
-  
+
   $id_usuario = $_POST['id_usuario'];
   $id_caja = $_POST['id_caja'];
   $estado = $_POST['estado'];
-  $fecha  = date('ymd'); 
+  $id_historial = $_POST['id_historial'];
+   
 
-  $historial = new Historial();
-  
+$historial = new historial(); 
   if(!empty($id_usuario) && !empty($id_caja) && !empty($estado)) {
-    $historial->insert( $id_usuario, $id_caja,$estado,$fecha);
-
-   header('location:../views/list_historiales.php');
-    
+    $historial->update($id_usuario,$id_caja,$estado,$id_historial);
+    header('location:../views/list_historiales.php');
   } else {
+    echo "00000000000000000000000000000 fracaso ";
+  } 
 
-    echo " No se puede agregar el historial  ";
-    
-  }
+
+
 
 ?>

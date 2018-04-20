@@ -29,13 +29,10 @@
         <h4>Agregar caja</h2>
         <div class="content">
           <form action="../controllers/create_caja.php" method="post">
-           
+           <label for="comment">Descripcion</label>
            <div class="form-group">
-              <label for="comment">descripcion</label>
               
-              <textarea rows="10" cols="70" name="descripcion" >
-Ingrese una descripcion acorde al contenido del archivo , recuerde que esto ayudara en proceso de busqueda del archivo 
-</textarea>
+        <textarea rows="10" cols="90" name="descripcion" required="true"> </textarea>
             </div>
              
 
@@ -49,23 +46,11 @@ Ingrese una descripcion acorde al contenido del archivo , recuerde que esto ayud
             </div>
 
             
-<!--
-<div class="form-group">
-  <label for="sel1">Sector:</label>
-  <select class="form-control" name="id_sector">
-      <?php // foreach ($sectores AS $s)
-{   ?>
-    <option value=<?php// echo "$s[id_sector]"; ?> ><?php //echo "$s[nombre]"; ?></option>
-    <?php } ?>
-  </select>
-</div>
- 
--->
 
 
 <div class="form-group">
   <label for="sel1">Categoria:</label>
-  <select class="form-control" name="id_categoria">
+  <select class="form-control" name="id_categoria" required="true" >
       <?php  foreach ($categorias AS $c)
 {   ?>
     <option value=<?php echo "$c[id_categoria]"; ?> ><?php echo "$c[nombre]"; ?></option>
@@ -78,11 +63,11 @@ Ingrese una descripcion acorde al contenido del archivo , recuerde que esto ayud
 
 <div class="form-group">
               <label>ubicacion</label>
-              <input class="form-control" type="text" name="ubicacion" ><br>
+              <input class="form-control" type="text" name="ubicacion" disabled="**********"><br>
             </div>
 <div class="form-group">
               <label>codigo</label>
-              <input class="form-control" type="text" name="codigo" ><br>
+              <input class="form-control" type="text" name="codigo" disabled="**********"><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button"  value="Agregar caja">  
           </form>

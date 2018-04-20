@@ -21,9 +21,9 @@ class Sector extends GestorBase {
 
  
  
-  public function insert($nombre, $cod, $descripcion ) {
-    $query = Sector::connection()->prepare("INSERT INTO sector (nombre, cod , descripcion ) VALUES (?, ?, ? )");
-    $query->execute(array($nombre, $cod, $descripcion ));
+  public function insert($nombre, $cod ) {
+    $query = Sector::connection()->prepare("INSERT INTO sector (nombre, cod  ) VALUES (?, ? )");
+    $query->execute(array($nombre, $cod));
   
   }
 

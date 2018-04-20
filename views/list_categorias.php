@@ -1,4 +1,12 @@
 <?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
+
+
+<?php
  require_once("../models/user.php"); 
  require_once("../models/connection.php");
  require_once("../models/sector.php");
@@ -18,12 +26,8 @@
 </div>
 
  <?php if (isset($_SESSION['email'])){    
-           if ($_SESSION['rol'] != "archivador") { ?>
-                 
+           if ($_SESSION['rol'] != "archivador") { ?>                 
    <center> <th><a  href="../views/add_categoria.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
-
-
-
 
 
 <?php          } 
@@ -33,11 +37,6 @@
            } 
         }?>
 
-
-
-
-
-
 <div class="container">
   <h2>Categorias </h2>
   <p>Categorias .</p>
@@ -46,7 +45,7 @@
       <tr>
         <th>nombre</th>
         <th>cod</th>
-        <th>descripcion</th>     
+     
       </tr>
     </thead>
     <tbody>
@@ -55,15 +54,32 @@
       <tr>
         <td><?php echo  $c["nombre"] ?></td>
         <td><?php echo  $c["cod"] ?></td>
-        <td><?php echo  $c["descripcion"] ?></td>
-
+  
        
 
         <?php if (isset($_SESSION['email'])){    
            if ($_SESSION['rol'] != "archivador") { ?>
                  
   <th><a href="../views/show_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+
+
+
+   <?php if ( $_SESSION['rol'] == "admin") { ?>
+     <th><a  href="../views/delete_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+    <?php }  ?>
+
+        
+
+
+
+      
+
+
+
+
+
+
+
         <th><a  href="../views/edit_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 
 

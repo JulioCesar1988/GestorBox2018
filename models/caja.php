@@ -1,7 +1,3 @@
-
-
-
-
 <?php
  require_once("../models/connection.php");
  require_once("../models/sector.php");
@@ -10,37 +6,82 @@
  $connection = new Connection(); 
  $connection = $connection->getConnection();  
 
-
-
-
  ?>
-
-
-
 
 <?php
 include_once "gestor_base.php";
 class Caja extends GestorBase  {
 
+ protected $id_caja;
+ protected $descripcion;
+ protected $precintoA;
+ protected $precintoB;
+ protected $codigo;
+ protected $id_sector;
+ protected $id_categoria;
+
+ static public function load($id){
+    $query = User::connection()->prepare("SELECT * FROM caja WHERE (id_caja = ?)");
+    $query->execute(array($id));
+    $resultado = $query->fetch(PDO::FETCH_ASSOC);
+    $aUsr = new Caja();
+    $aUsr->id_caja = $resultado["id_caja"];
+    $aUsr->descripcion = $resultado["descripcion"];
+    $aUsr->precintoA = $resultado["precintoA"];
+    $aUsr->precintoB = $resultado["precintoB"];
+    $aUsr->codigo = $resultado["codigo"];
+    $aUsr->id_sector = $resultado["id_sector"];
+    $aUsr->id_categoria = $resultado["id_categoria"];
+    return $aUsr;
+  }
+
+public function getId_caja(){
+  return $this->id_caja;
+}
+
 
  
   public function listAll() {
 
-   // $mi_sector = $_SESSION['id_sector'];
-    
-    // solo pueden ver sus archivos 
-    //$query = Caja::connection()->prepare("SELECT caja.descripcion , caja.precintoA, caja.precintoB , caja.ubicacion ,caja.codigo ,caja.id_caja ,sector.nombre as id_sector  FROM caja inner join sector on (caja.id_sector = sector.id_sector) where $mi_sector = caja.id_sector ");
-   // $query->execute();
-  
-   // el administrador y archivador pueden ver todos los archivos 
-    //if (( $_SESSION['rol'] = 'admin') || ( $_SESSION['rol'] = 'archivador')){
 
    $mi_sector = $_SESSION['id_sector'];
 
-   $query = Caja::connection()->prepare("SELECT caja.descripcion , caja.precintoA, caja.precintoB , caja.ubicacion ,caja.codigo ,caja.id_caja ,sector.nombre as id_sector  FROM caja inner join sector on (caja.id_sector = sector.id_sector) where (caja.id_sector = $mi_sector ) ");
+    if(($_SESSION['rol'] == 'archivador')||($_SESSION['rol'] == 'admin')){   
+
+    $query = Caja::connection()->prepare("SELECT caja.descripcion,
+                                                  caja.precintoA,
+                                                  caja.precintoB,
+                                                  caja.ubicacion,
+                                                  caja.codigo,
+                                                  caja.id_caja,
+                                                  sector.nombre as id_sector,
+                                                  categoria.nombre as id_categoria  
+                                                  FROM caja inner join sector on (caja.id_sector = sector.id_sector)  
+                                                            inner join categoria on (caja.id_categoria = categoria.id_categoria )");
+    $query->execute(); 
+
+
+    }else { 
+
+        $query = Caja::connection()->prepare("SELECT caja.descripcion,
+                                                     caja.precintoA,
+                                                     caja.precintoB,
+                                                     caja.ubicacion,
+                                                     caja.codigo,
+                                                     caja.id_caja,
+                                                     sector.nombre as id_sector,
+                                                     categoria.nombre as id_categoria  
+                                                     FROM caja inner join sector on (caja.id_sector = sector.id_sector) 
+                                                               inner join categoria on (caja.id_categoria = categoria.id_categoria)
+                                                     where (caja.id_sector = $mi_sector ) ");
     $query->execute();
 
- //   }
+
+      }
+   
+
+
+
 
     return $query->fetchAll();
 
@@ -53,6 +94,16 @@ class Caja extends GestorBase  {
 
   }
 
+
+
+
+// $caja->updateJefe( $descripcion, $precintoA ,$id_caja);
+
+public function updateJefe($descripcion, $precintoA, $precintoB,$id_caja ) {
+    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ?  WHERE (id_caja = ?) ");
+    $query->execute(array($descripcion,$precintoA,$precintoB,$id_caja));
+
+  }
 
 
 
@@ -80,14 +131,14 @@ foreach ($categoria as &$c) {
      $cod2 =$c['cod'];
 }
 
-echo $cantidad.'<br>';
+//echo $cantidad.'<br>';
 
 
 
  $sector = $cod1;   // codigo del sector dos caracteres.
  $categoria = $cod2; // codigo de la categoria un caracter. 
  $num = $cantidad;    //  
- echo 'Codigo Generado -> '.$sector.$categoria.date('ym').'0000'.(string)$num;
+ //echo 'Codigo Generado -> '.$sector.$categoria.date('ym').'0000'.(string)$num;
  
 
 $codigo = $sector.$categoria.date('ym').'0000'.(string)$num;

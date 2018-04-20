@@ -11,17 +11,10 @@
   
   $nombre = $_POST['nombre'];
   $cod = $_POST['cod'];
-  $descripcion = $_POST['descripcion'];
-  
-
-echo "$nombre";
-echo "$cod";
-echo "$descripcion";
-
-  
+    
   $sector = new Sector();
   
-  if(!empty($nombre) && !empty($cod) && !empty($descripcion) ) {
+  if(!empty($nombre) && !empty($cod) ) {
     $sector->insert( $nombre, $cod , $descripcion);
   
 

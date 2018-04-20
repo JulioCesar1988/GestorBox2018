@@ -12,9 +12,6 @@ if ($conn->connect_error) {
 
 $id_caja = $_GET['id_caja'];
 
-
-
-echo "$id_caja";
 $sql = "SELECT *  FROM caja where id_caja = $id_caja ";
 $result = $conn->query($sql);
 

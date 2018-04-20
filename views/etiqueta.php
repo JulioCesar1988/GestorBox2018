@@ -32,7 +32,7 @@ button {
 <body>
   <center>
   
-  <div id="imagen"></div>
+   <!--<div id="imagen"></div>-->
   </center>
 
 
@@ -43,16 +43,12 @@ button {
     var data = "<?php echo "$id" ?>";   
     $("#imagen").html('<br><img src="../barcode/barcode.php?text=<?php echo "$id" ?>&size=90&codetype=Code128&print=true"/>');
     $("#data").val('');
+
     $.post( "../views/guardarImagen.php", { filepath: "../codigosGenerados/"+data+".png", text:data } );
     
   </script>
   <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=40&text=<?php echo "$id" ?>"/> </center>
 
 
-
-
-
 </body>
 </html>
-
-<!-- http://davidscotttufts.com/2009/03/31/how-to-create-barcodes-in-php/ -->

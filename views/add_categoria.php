@@ -19,13 +19,10 @@
             </div>
             <div class="form-group">
               <label>Cod</label>
-              <input class="form-control" type="text" name="cod" required><br>
+              <input class="form-control" type="text" name="cod" maxlength="1" required><br>
             </div>
-               <div class="form-group">
-              <label>Descripcion</label>
-              <input class="form-control" type="text" name="descripcion" required><br>
-            </div>
-            <input type="submit" value="Agregar cateoria">
+               
+            <input type="submit" class="btn btn-primary" value="Agregar ">
           </form>
         </div>
       </div>

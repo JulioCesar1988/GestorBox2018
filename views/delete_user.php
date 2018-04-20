@@ -17,7 +17,7 @@ $id = $_GET['id_usuario'];
 
 echo "$id";
 // sql to delete a record
-$sql = "DELETE FROM usuario WHERE id_usuario = $id";
+$sql = "DELETE FROM usuario WHERE id_usuario = $id AND   $id NOT IN ( select id_usuario  from  historial  ) ";
 
 
 if ($conn->query($sql) === TRUE) {

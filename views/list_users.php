@@ -16,28 +16,14 @@
 <div class="container">
 </div>
           
-       <?php if (isset($_SESSION['email'])){    
-           if ($_SESSION['rol'] != "archivador") { ?>
-                 <center> <th><a  href="../views/add_user.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
-
-
-<?php          } 
-           else { ?> 
-              <td><?php echo  " "; ?></td>
-<?php
-           } 
-        }?>
-
-
-
-
-
-
-
-
+          <?php    if($_SESSION['rol'] == "admin"){ ?>
+           <center> <th><a  href="../views/add_user.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
+           <?php }  ?>
+       
+                
 <div class="container">
   <h2>Usuarios </h2>
-  <p>Los usuarios del sistema , pertenecen a un sector , su funcion es almacenar cajas , las cuales podran hacer pedidos o modificar su descipcion , .</p>
+  <p> </p>
   <table class="table">
     <thead>
       <tr>
@@ -54,22 +40,31 @@
       <tr>
         <td><?php echo  $u["nombre"] ?></td>
         <td><?php echo  $u["email"] ?></td>
+       <!--Si sos Administrador  --> 
+  
+
         <td><?php echo  $u["clave"] ?></td>
-        <td><?php echo  $u["id_sector"]?></td>
-        <td><?php echo  $u["rol"]?></td>
-
-
-
+        <td> <?php echo  $u["id_sector"] ?></td> 
+        <td><?php echo  $u["rol"] ?></td>
         
-            
+        
+       <!-- Si  no es admin no puede hacer nada con los usuarios -->     
        <?php if (isset($_SESSION['email'])){    
-           if ($_SESSION['rol'] != "archivador") { ?>
-              <th><a href="../views/show_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+           if ($_SESSION['rol'] == "admin") { ?>
+
+              <th><a href="../views/show_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>                 
+                 <th><a  href="../views/delete_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
+
+       
 <?php          } 
            else { ?> 
+           
+
               <td><?php echo  " "; ?></td>
+
+
+
 <?php
            } 
         }?>

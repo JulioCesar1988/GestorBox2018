@@ -17,7 +17,7 @@ $id_sector = $_GET['id_sector'];
 
 echo "$id_sector";
 // sql to delete a record
-$sql = "DELETE FROM sector WHERE id_sector = $id_sector";
+$sql = "DELETE FROM sector WHERE id_sector = $id_sector and $id_sector NOT IN ( select id_sector from caja) and $id_sector NOT IN (select id_sector from usuario ) ";
 
 
 if ($conn->query($sql) === TRUE) {

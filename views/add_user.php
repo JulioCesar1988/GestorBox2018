@@ -50,8 +50,8 @@
       
     <option value ="admin">Administrador</option>
     <option value ="jefe">Jefe de Sector</option>
-    <option value ="aux">Auxiliar</option>
-    <option value ="blo">Bloquear</option>
+    <option value ="archivador">Archivador</option>
+    <option value ="bloqueado">Bloquear</option>
   
   </select>
   

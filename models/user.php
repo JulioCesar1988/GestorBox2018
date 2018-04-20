@@ -1,6 +1,32 @@
 <?php
 include_once "gestor_base.php";
 class User  extends GestorBase {
+
+ protected $email;
+ protected $nombre;
+ protected $clave;
+ protected $id_sector;
+ protected $rol;
+ protected $id_usuario;
+
+ static public function load($id){
+    $query = User::connection()->prepare("SELECT * FROM usuario WHERE (id_usuario = ?)");
+    $query->execute(array($id));
+    $resultado = $query->fetch(PDO::FETCH_ASSOC);
+    $aUsr = new User();
+    $aUsr->id_usuario = $resultado["id_usuario"];
+    $aUsr->email = $resultado["email"];
+    $aUsr->nombre = $resultado["nombre"];
+    $aUsr->clave = $resultado["clave"];
+    $aUsr->rol = $resultado["rol"];
+    $aUsr->id_sector = $resultado["id_sector"];
+    return $aUsr;
+  }
+
+public function getId_usuario(){
+  return $this->id_usuario;
+}
+
   // buscamos el email.  
   public function fetch($email){
     $query = User::connection()->prepare("SELECT * FROM usuario WHERE (email = ?)");

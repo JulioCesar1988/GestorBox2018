@@ -1,35 +1,22 @@
-
-
-
 <?php
-
-
-session_start();
+ session_start();
  require_once("../models/connection.php");
  require_once("../models/sector.php");
  require_once("../models/caja.php");
  require_once("../models/categoria.php");
  $connection = new Connection(); 
  $connection = $connection->getConnection();  
-
-
-
-
  ?>
-
 
 <?php
 // Tomamos de la sesion el ID del sector 
  $busco = $_SESSION['id_sector'];
-
  // necesitamos la cantidad de cajas almacenadas para UN SECTOR 
  $cantidad = Caja::listCant();
-
-$elemento = 19;
-
-//buscamos el codigo de sector y la categoria
-$sectores = Sector::CodSector($busco);
-$categoria = Categoria::CodCategoria($elemento);
+ $elemento = 19;
+ //buscamos el codigo de sector y la categoria
+ $sectores = Sector::CodSector($busco);
+ $categoria = Categoria::CodCategoria($elemento);
 
 // Obtenemos el dato Recorriendo los resultados
 

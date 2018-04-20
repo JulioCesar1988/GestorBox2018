@@ -17,7 +17,7 @@ $id_categoria = $_GET['id_categoria'];
 
 echo "$id_categoria";
 // sql to delete a record
-$sql = "DELETE FROM categoria WHERE id_categoria = $id_categoria";
+$sql = "DELETE FROM categoria WHERE id_categoria = $id_categoria and $id_categoria NOT IN ( select id_categoria from caja  )";
 
 
 if ($conn->query($sql) === TRUE) {

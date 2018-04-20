@@ -10,12 +10,7 @@
  $sectores = Sector::ListAll();
  $cajas = Caja::ListAll();
  $categorias = Categoria::ListAll();
-
-
  ?>
-
-
-
 
 <?php
 $servername = "localhost";
@@ -41,7 +36,7 @@ $id_sector = "null";
 $id_categoria = "null";
 $codigo = "null";
 $ubicacion = "null";
-$id_caja = "";
+$id_caja = "null";
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -81,10 +76,14 @@ $conn->close();
         <h4>Modificar caja</h2>
         <div class="content">
           <form action="../controllers/update_caja.php" method="post">
-           <div class="form-group">
+         
+                <div class="form-group">
               <label for="comment">descripcion</label>
-              <input class="form-control" type="textarea"  rows="5" name="descripcion" required value="<?php echo $descripcion ?>"><br>
+              
+              <textarea rows="10" cols="70" name="descripcion" required="true"><?php echo $descripcion ?>" 
+</textarea>
             </div>
+
             <div class="form-group">
               <label>PrecintoA</label>
               <input class="form-control" type="text" name="precintoA" required onChange="validarSiNumero(this.value);" value="<?php echo $precintoA ?>"><br>
@@ -93,40 +92,55 @@ $conn->close();
               <label>PrecintoB</label>
               <input class="form-control" type="text" name="precintoB" required onChange="validarSiNumero(this.value);" value="<?php echo $precintoB ?>"><br>
             </div>
+
+
+
+<!--
+
 <div class="form-group">
   <label for="sel1">Sector:</label>
   <select class="form-control" name="id_sector">
-      <?php  foreach ($sectores AS $s)
+      <?php  //foreach ($sectores AS $s)
 {   ?>
-    <option value=<?php echo "$s[id_sector]"; ?> ><?php echo "$s[nombre]"; ?></option>
+    <option value=<?php// echo "$s[id_sector]"; ?> ><?php //echo "$s[nombre]"; ?></option>
     <?php } ?>
   </select>
 </div>
+
+-->
+
+<!--
 
 <div class="form-group">
   <label for="sel1">Categoria:</label>
   <select class="form-control" name="id_categoria">
-      <?php  foreach ($categorias AS $c)
+      <?php  //foreach ($categorias AS $c)
 {   ?>
-    <option value=<?php echo "$c[id_categoria]"; ?> ><?php echo "$c[nombre]"; ?></option>
+    <option value=<?php //echo "$c[id_categoria]"; ?> ><?php// echo "$c[nombre]"; ?></option>
     <?php } ?>
   </select>
 </div>
 
+-->
 
-
+<!--
 
 <div class="form-group">
               <label>ubicacion</label>
-              <input class="form-control" type="text" name="ubicacion"  value="<?php echo $ubicacion ?>"><br>
-            </div>
+              <input class="form-control" type="text" name="ubicacion"  value="<?php //echo $ubicacion ?>"><br>
+            </div>  -->
+
+
+<!--
 <div class="form-group">
               <label>codigo</label>
-              <input class="form-control" type="text" name="codigo" value="<?php echo $codigo ?>"><br>
+              <input class="form-control" type="text" name="codigo" value="<?php //echo $codigo ?>" required><br>
             </div>
+-->
+
 <div class="form-group">
               <label>ID</label>
-              <input class="form-control" type="text" name="id_caja" value="<?php echo " $id_caja"; ?>" required><br>
+              <input class="form-control" type="text" name="id_caja" value="<?php echo " $id_caja"; ?>"  required ><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button"  value="Agregar caja">  
           </form>

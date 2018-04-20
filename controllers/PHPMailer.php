@@ -69,7 +69,8 @@ try {
     $mail->Username = 'noreply@millerbi.net';                 // SMTP username
     $mail->Password = 'nor.mbi2017';                           // SMTP password
     $mail->setFrom('noreply@millerbi.net', 'gestorbox2018');
-    $mail->addAddress('jcontreras@millerbi.net', 'gestorbox2018');     // Add a recipient
+    $mail->addAddress('jcontreras@millerbi.net', 'gestorbox2018');
+    $mail->addAddress('archivador@millerbi.net', 'gestorbox2018');     // Add a recipient
     $mail->SMTPOptions = array(
             'ssl' => array(
                 'verify_peer' => false,

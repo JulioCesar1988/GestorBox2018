@@ -5,28 +5,15 @@
 
   $connection = new Connection();
   $connection = $connection->getConnection();
-
   $descripcion = $_POST['descripcion'];
   $precintoA = $_POST['precintoA'];
   $precintoB = $_POST['precintoB'];
-
   $mi_sector = $_SESSION['id_sector'];
-
   $id_sector = $mi_sector;  //$_POST['id_sector'];
   $ubicacion = $_POST['ubicacion'];
   $codigo = $_POST['codigo'];
   $id_categoria = $_POST['id_categoria'];
 
-
-echo " Soy el controlador ";
-//echo " descripcion -> $descripcion";
-echo " precintoA -> $precintoA";
-echo " precintoB -> $precintoB";
-echo " IdDeSector -> $id_sector";
-echo " Ubicacion -> $ubicacion";
-echo " codigo -> $codigo";
-echo " IdCategoria -> $id_categoria";
-  
   $caja = new Caja();
   
   if(!empty($descripcion) && !empty($precintoA) && !empty($precintoB)) {
