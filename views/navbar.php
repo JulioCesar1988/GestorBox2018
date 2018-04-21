@@ -52,7 +52,7 @@
               <li><a href="/gestorbox2018/views/login.php"> Ingresar</a></li>
               <?php
 
-         }  else {    echo  'Usuario : '.$_SESSION['email'];  
+         }  else {    echo  'Usuario : '.$_SESSION['email'].' | '.$_SESSION['rol'] ;  
 
                  ?>
 
@@ -68,17 +68,6 @@
       <li><a href="/gestorbox2018/views/list_cajas.php">Caja</a></li>
       <li><a href="/gestorbox2018/views/list_historiales.php">Historial</a></li>
        <!--<li><a href="/gestorbox2018/views/estadisticas.php">Estadisticas</a></li> -->
-       <!-- <li><a href="/gestorbox2018/views/test.php">test</a></li> -->
-
-    
-
-
-
-
-
-
-
-
 
 
         <li><a href="/gestorbox2018/controllers/logout.php/"><span class="glyphicon glyphicon-user"></span> Salir </a></li> <?php

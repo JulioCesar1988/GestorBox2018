@@ -89,25 +89,31 @@ public function getId_caja(){
 
   }
 
+
+   // update full del administrador del sistema .
    public function update($descripcion, $precintoA, $precintoB, $id_sector , $ubicacion ,$codigo,$id_categoria ,$id_caja ) {
     $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ?, id_sector = ? , ubicacion = ? ,codigo = ? , id_categoria = ?  WHERE (id_caja = ?) ");
     $query->execute(array($descripcion,$precintoA,$precintoB,$id_sector,$ubicacion,$codigo,$id_categoria,$id_caja));
 
   }
 
-
-
-
-// $caja->updateJefe( $descripcion, $precintoA ,$id_caja);
-
-public function updateJefe($descripcion, $precintoA, $precintoB,$id_caja ) {
-    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ?  WHERE (id_caja = ?) ");
-    $query->execute(array($descripcion,$precintoA,$precintoB,$id_caja));
-
+// modificacion del los jefe de sectores sobre sus cajas. 
+public function updateJefe($descripcion, $precintoA, $precintoB,$id_categoria,$id_caja ) {
+    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ? ,id_categoria = ?  WHERE (id_caja = ?) ");
+    $query->execute(array($descripcion,$precintoA,$precintoB,$id_categoria,$id_caja));
   }
+     
+  
 
+//  modificacion del archivador en una caja .    
+public function updateArchivador($precintoA,$precintoB,$ubicacion,$id_caja){
+$query = Caja::connection()->prepare("UPDATE caja SET   precintoA = ? , precintoB = ?  , ubicacion = ?  WHERE (id_caja = ?) ");
+    $query->execute(array($precintoA,$precintoB,$ubicacion,$id_caja));
 
+}
 
+  
+  
 // tenemos que generar el codigo   XX  Sector  Y categoria  AAMMDD0 fecha 0000 incremental 
 
 

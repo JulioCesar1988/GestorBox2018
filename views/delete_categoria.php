@@ -1,20 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gestorboxdb";
-
+include_once ("../include/params.php");
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(Params::$DB_Host,Params::$DB_usuario,Params::$DB_clave,Params::$DB_nombre);
 // Check connection
+// Create connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-
-
 $id_categoria = $_GET['id_categoria'];
-
 echo "$id_categoria";
 // sql to delete a record
 $sql = "DELETE FROM categoria WHERE id_categoria = $id_categoria and $id_categoria NOT IN ( select id_categoria from caja  )";

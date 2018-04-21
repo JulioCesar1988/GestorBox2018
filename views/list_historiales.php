@@ -25,7 +25,11 @@
 
 <div class="container">
   <h2>Historiales </h2>
-  <p>En las historias vas poder encontrar los pedidos que realizaste y las entregas con tu usuario .</p>
+  <p>En las historias vas poder encontrar los pedidos que realizaste y las entregas con tu cuenta .</p>
+
+
+
+
   <table class="table">
     <thead>
       <tr>

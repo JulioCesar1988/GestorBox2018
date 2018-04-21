@@ -1,7 +1,7 @@
 <?php
 include_once "gestor_base.php";
 include_once ("../models/historial.php");
-include_once "../include/params.php";
+include_once ("../include/params.php");
 class Historial extends GestorBase {
   public function listAll() {
      session_start();
@@ -37,22 +37,10 @@ class Historial extends GestorBase {
   }
 
 
-
-
-// public function update($nombre, $cod, $descripcion , $id_sector) {
-  //  $query = Sector::connection()->prepare("UPDATE sector SET  nombre = ? , cod = ? , descripcion = ? WHERE (id_sector = ?) ");
-   // $query->execute(array($nombre , $cod , $descripcion ,$id_sector));
-  //}
-
-
-
-
-
-  public function update($id_usuario , $id_caja ,$estado ,$id_historial,$fecha){
-     $query = Historial::connection()->prepare("UPDATE  historial SET id_caja = ? , id_usuario = ? , estado = ? ,fecha = ?  where(id_historial=?)");
-      $query->execute(array($id_caja,$id_usuario,$estado,$id_historial,$fecha));
+  public function update($id_usuario , $id_caja ,$estado ,$id_historial){
+      $query = Historial::connection()->prepare("UPDATE  historial SET id_caja = ? , id_usuario = ? , estado = ?   where(id_historial=?)");
+      $query->execute(array($id_caja,$id_usuario,$estado,$id_historial));
   }
-
 
    public function listCant() {
     $query = Historial::connection()->prepare("SELECT * FROM historial");

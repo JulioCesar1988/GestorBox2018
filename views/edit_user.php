@@ -3,6 +3,7 @@
  require_once("../models/connection.php");
  require_once("../models/sector.php");
  require_once("../models/caja.php");
+
  $connection = new Connection(); 
  $connection = $connection->getConnection();  
  $usuarios = User::listAll();
@@ -10,13 +11,11 @@
  ?>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gestorboxdb";
+
+include_once ("../include/params.php");
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+$conn = new mysqli(Params::$DB_Host,Params::$DB_usuario,Params::$DB_clave,Params::$DB_nombre);
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 

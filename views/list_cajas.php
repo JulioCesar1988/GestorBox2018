@@ -42,7 +42,7 @@ $(document).ready(function(){
     </div>
   </div>
 </form></center>
-
+<input type="button" onclick="showAll()" value="Puto">
 <center>
 
 
@@ -56,13 +56,10 @@ $(document).ready(function(){
     if (isset($_SESSION['email'])){ 
 
      if ($_SESSION['rol'] == "archivador"){
-              echo "Es Archivador - Acciones de Archivador ";
+              echo "Su tarea como ARCHIVADOR es asignar  ubicacion de los archivos (Cajas), y recibir los pedidos que realicen los sectores. ";
          }  else {
              if (($_SESSION['rol'] == "admin") || ($_SESSION['rol'] == "jefe")) {
-              
-
              ?>
-             
              <!--es administrador puede agregar cajas  -->
              <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
           <?php 
@@ -84,7 +81,7 @@ $(document).ready(function(){
 
 <div class="container">
   <h2>Caja </h2>
-  <p></p>
+  <p>Las cajas de su sector contiene informacion historica de su sector . </p>
   <table class="table">
     <thead>
       <tr>
@@ -109,7 +106,7 @@ $(document).ready(function(){
             
        <?php if (isset($_SESSION['email'])){    
            if ($_SESSION['rol'] != "archivador") { ?>
-              <td><?php echo  $c["descripcion"] ?></td>
+              <td><?php echo  substr($c["descripcion"], 0, 5) ?><span class="dall" onclick="show(this)"><span>....</span><span style="display: none;"><?php echo  substr($c["descripcion"], 6) ?></span></td>
 <?php          } 
            else { ?> 
               <td><?php echo  " "; ?></td>
@@ -117,12 +114,18 @@ $(document).ready(function(){
            } 
         }?>
 
-
-
         
         <td><?php echo  $c["precintoA"] ?></td>
         <td><?php echo  $c["precintoB"] ?></td>
+
+        
+         <?php   if ($_SESSION['rol'] == "archivador" )  { ?>
         <td><?php echo  $c["ubicacion"] ?></td>
+        <?php   } else { ?>  
+                      <td><?php echo " "; ?></td> 
+                      <?php } ?>
+
+
         <td><?php echo  $c["id_sector"] ?></td>
         <td><?php echo  $c["id_categoria"] ?></td>
         <td><?php echo  $c["codigo"] ?></td>
@@ -159,5 +162,19 @@ $(document).ready(function(){
     </tbody>
   </table>
 </div>
+<script>
+function showAll(){
+  $( ".dall" ).each(function() {
+    show(this);
+});
+}
+
+  function show(objtxt){
+    var obj = $(objtxt);
+    obj.children().eq(0).hide();
+    obj.children().eq(1).show();
+  }
+</script>
+
 </body>
 </html>

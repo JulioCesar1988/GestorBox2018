@@ -1,24 +1,28 @@
 <?php
+
  require_once("../models/user.php"); 
  require_once("../models/connection.php");
  require_once("../models/sector.php");
  require_once("../models/caja.php");
  require_once("../models/categoria.php");
+
  $connection = new Connection(); 
  $connection = $connection->getConnection();  
+
  $usuarios = User::listAll();
  $sectores = Sector::ListAll();
  $cajas = Caja::ListAll();
  $categorias = Categoria::ListAll();
  ?>
 
+
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gestorboxdb";
+
+include_once ("../include/params.php");
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(Params::$DB_Host,Params::$DB_usuario,Params::$DB_clave,Params::$DB_nombre);
+// Check connection
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -77,12 +81,20 @@ $conn->close();
         <div class="content">
           <form action="../controllers/update_caja.php" method="post">
          
+
+<?php   if ( $_SESSION['rol'] != "archivador") {  ?>
+
                 <div class="form-group">
               <label for="comment">descripcion</label>
               
               <textarea rows="10" cols="70" name="descripcion" required="true"><?php echo $descripcion ?>" 
 </textarea>
             </div>
+
+<?php } ?>
+
+
+
 
             <div class="form-group">
               <label>PrecintoA</label>
@@ -95,40 +107,47 @@ $conn->close();
 
 
 
-<!--
+
+<?php if($_SESSION['rol'] == "admin") { ?>
 
 <div class="form-group">
   <label for="sel1">Sector:</label>
   <select class="form-control" name="id_sector">
-      <?php  //foreach ($sectores AS $s)
+      <?php  foreach ($sectores AS $s)
 {   ?>
-    <option value=<?php// echo "$s[id_sector]"; ?> ><?php //echo "$s[nombre]"; ?></option>
+    <option value=<?php echo "$s[id_sector]"; ?> ><?php echo "$s[nombre]"; ?></option>
     <?php } ?>
   </select>
 </div>
 
--->
 
-<!--
+<?php  }  ?>
+
+
+<?php if($_SESSION['rol'] !=  "archivador") { ?>
 
 <div class="form-group">
   <label for="sel1">Categoria:</label>
   <select class="form-control" name="id_categoria">
-      <?php  //foreach ($categorias AS $c)
+      <?php  foreach ($categorias AS $c)
 {   ?>
-    <option value=<?php //echo "$c[id_categoria]"; ?> ><?php// echo "$c[nombre]"; ?></option>
+    <option value=<?php echo "$c[id_categoria]"; ?> ><?php echo "$c[nombre]"; ?></option>
     <?php } ?>
   </select>
 </div>
 
--->
 
-<!--
+<?php           } ?>
+
+
+<?php   if ( $_SESSION['rol'] == "archivador") {  ?>
 
 <div class="form-group">
               <label>ubicacion</label>
-              <input class="form-control" type="text" name="ubicacion"  value="<?php //echo $ubicacion ?>"><br>
-            </div>  -->
+              <input class="form-control" type="text" name="ubicacion"  value="<?php echo $ubicacion ?> " maxlength="4" required><br>
+            </div>  
+
+<?php } ?>
 
 
 <!--
@@ -142,7 +161,7 @@ $conn->close();
               <label>ID</label>
               <input class="form-control" type="text" name="id_caja" value="<?php echo " $id_caja"; ?>"  required ><br>
             </div>
-            <input type="submit"  class="btn btn-primary" role="button"  value="Agregar caja">  
+            <input type="submit"  class="btn btn-primary" role="button"  value="Modificar Caja">  
           </form>
         </div>
       </div>

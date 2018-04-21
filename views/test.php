@@ -32,8 +32,6 @@ foreach ($categoria as &$c) {
 
 echo $cantidad.'<br>';
 
-
-
  $sector = $cod1;   // codigo del sector dos caracteres.
  $categoria = $cod2; // codigo de la categoria un caracter. 
  $num = $cantidad;    //  
