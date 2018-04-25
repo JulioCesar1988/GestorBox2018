@@ -23,6 +23,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <body>
+
+     <?php include '../include/head.php';?>
      <?php include '../views/navbar.php';?>
     <div class="row">
       <div class="col-md-offset-4 col-md-4" style="text-align: center;">

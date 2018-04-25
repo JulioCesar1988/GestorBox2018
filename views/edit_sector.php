@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
       $nombre = $row["nombre"];
       $cod = $row["cod"];
-      $descripcion = $row["descripcion"];       
+      
     }
 } else {
     echo "0 results";
@@ -47,6 +47,7 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="en">
   <body>
+    <?php include '../include/head.php';?>
      <?php include '../views/navbar.php';?>
     <div class="row">
       <div class="col-md-offset-4 col-md-4" style="text-align: center;">
@@ -55,19 +56,16 @@ $conn->close();
           <form action="../controllers/update_sector.php" method="post">
             <div class="form-group">
               <label>nombre</label>
-              <input class="form-control" type="text" name="nombre" value="<?php echo " $nombre"; ?>" required><br>
+              <input class="form-control" type="text" name="nombre" value="<?php echo "$nombre"; ?>" required><br>
             </div>
             <div class="form-group">
               <label>cod</label>
-              <input class="form-control" type="text" name="cod" value="<?php echo " $cod"; ?>" required><br>
+              <input class="form-control" type="text" name="cod" value="<?php echo "$cod"; ?>" required><br>
             </div>
-             <div class="form-group">
-              <label>Descripcion</label>
-              <input class="form-control" type="text" name="descripcion" value="<?php echo " $descripcion"; ?>" required><br>
-            </div>
+            
              <div class="form-group">
               <label>ID</label>
-              <input class="form-control" type="text" name="id_sector" value="<?php echo " $id_sector"; ?>" required><br>
+              <input class="form-control" type="text" name="id_sector" value="<?php echo "$id_sector"; ?>" required><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
           </form>

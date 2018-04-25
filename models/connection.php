@@ -8,7 +8,7 @@ class Connection {
   function __construct(){
     try {
   
-      $con = new PDO("mysql:host=".Params::$DB_Host.';'."dbname=".Params::$DB_nombre, Params::$DB_usuario,Params::$DB_clave);
+      $con = new PDO("mysql:host=".Params::$DB_Host.';'."dbname=".Params::$DB_nombre . ";charset=utf8", Params::$DB_usuario,Params::$DB_clave);
       
       $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->connection = $con;

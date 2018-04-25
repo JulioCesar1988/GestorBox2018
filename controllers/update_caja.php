@@ -22,12 +22,12 @@
             $descripcion = $_POST['descripcion'];
             $precintoA = $_POST['precintoA'];
             $precintoB = $_POST['precintoB'];
-            $id_sector = $_POST['id_sector'];
+            //$id_sector = $_POST['id_sector'];
             $ubicacion = $_POST['ubicacion'];
             $codigo = $_POST['codigo'];
             $id_categoria = $_POST['id_categoria'];
             
-            $caja->update( $descripcion, $precintoA , $precintoB , $id_sector , $ubicacion ,$codigo,$id_categoria,$id_caja);
+            $caja->update( $descripcion, $precintoA , $precintoB , $ubicacion ,$codigo,$id_categoria,$id_caja);
         break;
     case "jefe":
         echo "Es jefe el baboso";

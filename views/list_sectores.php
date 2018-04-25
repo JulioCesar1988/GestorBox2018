@@ -9,7 +9,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GestorBox</title>
+
+  <?php include '../include/head.php';?>
+
 </head>
 <body>
   <?php include '../views/navbar.php';?>

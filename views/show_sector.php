@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
       $nombre = $row["nombre"];
       $cod = $row["cod"];
-      $descripcion = $row["descripcion"];
+      
              
     }
 } else {
@@ -51,7 +51,7 @@ $conn->close();
  <ul class="list-group">
   <li class="list-group-item">Sector :  <?php echo " $nombre"; ?> </li>
   <li class="list-group-item">Cod : <?php echo " $cod"; ?> </li>
-  <li class="list-group-item">Descripcion : <?php echo " $descripcion"; ?></li>
+
 </ul>
         </div>
       </div>

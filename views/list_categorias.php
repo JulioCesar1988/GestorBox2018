@@ -21,6 +21,7 @@
   <title>GestorBox</title>
 </head>
 <body>
+  <?php include '../include/head.php';?>
   <?php include '../views/navbar.php';?>
 <div class="container">
 </div>

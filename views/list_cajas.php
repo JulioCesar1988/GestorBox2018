@@ -16,9 +16,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GestorBox</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script>
+
+<?php include '../include/head.php';?>
+<script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -28,7 +28,6 @@ $(document).ready(function(){
   });
 });
 </script>
-
 </head>
 <body>
   <?php include '../views/navbar.php';?>
@@ -42,7 +41,9 @@ $(document).ready(function(){
     </div>
   </div>
 </form></center>
-<input type="button" onclick="showAll()" value="Puto">
+
+
+
 <center>
 
 
@@ -61,7 +62,29 @@ $(document).ready(function(){
              if (($_SESSION['rol'] == "admin") || ($_SESSION['rol'] == "jefe")) {
              ?>
              <!--es administrador puede agregar cajas  -->
-             <center> <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th></center>
+             
+
+
+<div class="container">
+  <h2></h2>
+   <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th>
+   <th><input type="button" onclick="showAll()" class="default"  value="Ver Todo"></button></th>
+  
+
+  <!--<button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-link">Link</button>      -->
+
+
+</div>
+
+
+
+
           <?php 
 
          }else
@@ -93,7 +116,7 @@ $(document).ready(function(){
         <th>Sector</th>
         <th>Categoria</th>     
         <th>Codigo</th>  
-        <th>Barra</th>   
+       
       </tr>
     </thead>
     <tbody id="myTable" >
@@ -106,7 +129,7 @@ $(document).ready(function(){
             
        <?php if (isset($_SESSION['email'])){    
            if ($_SESSION['rol'] != "archivador") { ?>
-              <td><?php echo  substr($c["descripcion"], 0, 5) ?><span class="dall" onclick="show(this)"><span>....</span><span style="display: none;"><?php echo  substr($c["descripcion"], 6) ?></span></td>
+              <td><?php echo  substr($c["descripcion"], 0, 100) ?><span class="dall" onclick="show(this)"><span>....</span><span style="display: none;"><?php echo  substr($c["descripcion"], 2000) ?></span></td>
 <?php          } 
            else { ?> 
               <td><?php echo  " "; ?></td>
@@ -129,7 +152,7 @@ $(document).ready(function(){
         <td><?php echo  $c["id_sector"] ?></td>
         <td><?php echo  $c["id_categoria"] ?></td>
         <td><?php echo  $c["codigo"] ?></td>
-        <td><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  $c["codigo"]?>&print=false" /></td>
+       
         
 
         
@@ -137,7 +160,7 @@ $(document).ready(function(){
            if ($_SESSION['rol'] != "archivador") { ?>
               
                <th><a  href="../controllers/PHPMailer.php?id_caja=<?php echo $c["id_caja"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
-                <th><a href="../views/show_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
+                <th><a href="../views/show_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-info" role="button" >Informacion</a></th> 
 
 <?php          } 
            else { ?> 

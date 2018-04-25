@@ -16,8 +16,9 @@
  ?>
 
 
-<?php
 
+<?php
+include '../include/head.php';
 include_once ("../include/params.php");
 // Create connection
 $conn = new mysqli(Params::$DB_Host,Params::$DB_usuario,Params::$DB_clave,Params::$DB_nombre);
@@ -108,20 +109,7 @@ $conn->close();
 
 
 
-<?php if($_SESSION['rol'] == "admin") { ?>
 
-<div class="form-group">
-  <label for="sel1">Sector:</label>
-  <select class="form-control" name="id_sector">
-      <?php  foreach ($sectores AS $s)
-{   ?>
-    <option value=<?php echo "$s[id_sector]"; ?> ><?php echo "$s[nombre]"; ?></option>
-    <?php } ?>
-  </select>
-</div>
-
-
-<?php  }  ?>
 
 
 <?php if($_SESSION['rol'] !=  "archivador") { ?>

@@ -1,7 +1,23 @@
 <?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/categoria.php");
+ require_once("../models/caja.php");
+ 
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ 
+ $cajas = Caja::listAll(); 
+ 
+ ?>
+
+
+
+<?php
 $id = $_GET['id'];
 ?>
-<center><?php echo "$id"; ?> </center>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,15 +55,57 @@ button {
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
   <script>
-    
-    var data = "<?php echo "$id" ?>";   
-    $("#imagen").html('<br><img src="../barcode/barcode.php?text=<?php echo "$id" ?>&size=90&codetype=Code128&print=true"/>');
-    $("#data").val('');
 
+
+    
+   // Ex codigo para generar los codigo de barra   
+    //var data = "<?php echo "$id" ?>";   
+    //$("#imagen").html('<br><img src="../barcode/barcode.php?text=<?php echo "$id" ?>&size=150&codetype=Code128&print=true"/>');
+    //$("#data").val('');
+    //$.post( "../views/guardarImagen.php", { filepath: "../codigosGenerados/"+data+".png", text:data } );
+  
+  
+  </script>
+ <!-- <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=100&text=<?php echo "$id" ?>"/> </center> -->
+  <!-- <center><?php echo "$id"; ?> </center> --> 
+ 
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+      
+ 
+      </tr>
+    </thead>
+    <tbody id="myTable" >
+  <?php  foreach ($cajas AS $c )
+{   ?>
+      <tr>
+        
+      
+        
+        <script>
+   // Vamos a iterar por todas las cajas para generar todas las equiquetas de su sector .    
+    var data = "<?php echo  $c["codigo"] ?>";  
+    $("#imagen").html('<br><img src="../barcode/barcode.php?text=<?php echo  $c["codigo"] ?>"&size=200&codetype=Code39&print=true"/>');
+    $("#data").val('');
     $.post( "../views/guardarImagen.php", { filepath: "../codigosGenerados/"+data+".png", text:data } );
     
   </script>
-  <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=40&text=<?php echo "$id" ?>"/> </center>
+  <center><img alt="<?php echo  $c["codigo"] ?>"" src="../barcode/barcode.php?codetype=Codabar&size=80&text=<?php echo  $c["codigo"] ?>"/> </center>
+  <center><?php echo  $c["codigo"] ?>  </center>
+
+       
+<center><p>---------------------------------------------------------------------------------------</p></center>
+
+
+  <?php } ?>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
 </body>

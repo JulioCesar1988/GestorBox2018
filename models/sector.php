@@ -22,7 +22,7 @@ class Sector extends GestorBase {
  
  
   public function insert($nombre, $cod ) {
-    $query = Sector::connection()->prepare("INSERT INTO sector (nombre, cod  ) VALUES (?, ? )");
+    $query = Sector::connection()->prepare("INSERT INTO sector (nombre, cod  ) VALUES (?, ? ) ");
     $query->execute(array($nombre, $cod));
   
   }
@@ -36,9 +36,9 @@ class Sector extends GestorBase {
     return $query->rowCount();
   }
 
-  public function update($nombre, $cod, $descripcion , $id_sector) {
-    $query = Sector::connection()->prepare("UPDATE sector SET  nombre = ? , cod = ? , descripcion = ? WHERE (id_sector = ?) ");
-    $query->execute(array($nombre , $cod , $descripcion ,$id_sector));
+  public function update($nombre, $cod , $id_sector) {
+    $query = Sector::connection()->prepare("UPDATE sector SET  nombre = ? , cod = ? WHERE (id_sector = ?) ");
+    $query->execute(array($nombre , $cod  ,$id_sector));
   }
 
 

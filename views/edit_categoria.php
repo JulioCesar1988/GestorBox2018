@@ -40,15 +40,15 @@ $conn->close();
           <form action="../controllers/update_categoria.php" method="post">
             <div class="form-group">
               <label>nombre</label>
-              <input class="form-control" type="text" name="nombre" value="<?php echo " $nombre"; ?>" required><br>
+              <input class="form-control" type="text" name="nombre" value="<?php echo "$nombre"; ?>" required><br>
             </div>
             <div class="form-group">
               <label>cod</label>
-              <input class="form-control" type="text" name="cod" value="<?php echo " $cod"; ?>" maxlength="1" required><br>
+              <input class="form-control" type="text" name="cod" value="<?php echo "$cod"; ?>" maxlength="1" required><br>
             </div>
              <div class="form-group">
               <label>ID</label>
-              <input class="form-control" type="text" name="id_categoria" value="<?php echo " $id_categoria"; ?>" required><br>
+              <input class="form-control" type="text" name="id_categoria" value="<?php echo "$id_categoria"; ?>" required><br>
             </div>
             <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">
           </form>

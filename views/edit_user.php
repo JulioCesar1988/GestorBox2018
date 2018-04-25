@@ -99,13 +99,13 @@ $conn->close();
 </div>
               <div class="form-group">
               <label>id</label>
-              <input class="form-control"    type="text"  name="id_usuario" value="<?php echo " $id_usuario"; ?>" required><br>
+              <input class="form-control"    type="text"  name="id_usuario" value="<?php echo "$id_usuario"; ?>" required><br>
             </div>
 
 
             <div class="form-group">
               <label>Password</label>
-              <input class="form-control" type="password" name="clave" value="<?php echo " $clave"; ?>"  required><br>
+              <input class="form-control" type="password" name="clave" value="<?php echo "$clave"; ?>"  required><br>
             </div>
 
             <input type="submit"  class="btn btn-primary" role="button" value="Registrarse">

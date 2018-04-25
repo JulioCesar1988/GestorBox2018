@@ -91,9 +91,9 @@ public function getId_caja(){
 
 
    // update full del administrador del sistema .
-   public function update($descripcion, $precintoA, $precintoB, $id_sector , $ubicacion ,$codigo,$id_categoria ,$id_caja ) {
-    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ?, id_sector = ? , ubicacion = ? ,codigo = ? , id_categoria = ?  WHERE (id_caja = ?) ");
-    $query->execute(array($descripcion,$precintoA,$precintoB,$id_sector,$ubicacion,$codigo,$id_categoria,$id_caja));
+   public function update($descripcion, $precintoA, $precintoB , $ubicacion ,$codigo,$id_categoria ,$id_caja ) {
+    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ? , ubicacion = ? ,codigo = ? , id_categoria = ?  WHERE (id_caja = ?) ");
+    $query->execute(array($descripcion,$precintoA,$precintoB,$ubicacion,$codigo,$id_categoria,$id_caja));
 
   }
 
