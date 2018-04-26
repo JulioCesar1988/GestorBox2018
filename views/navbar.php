@@ -38,13 +38,11 @@
 
                  ?>
 
-
          <?php  if( $_SESSION['rol'] == "admin"){  ?>
                
         <li><a href="/gestorbox2018/views/list_users.php">Usuario</a></li>
         <li><a href="/gestorbox2018/views/list_sectores.php">Sector</a></li>
          <?php } ?>
- 
       <!-- -->
       <li><a href="/gestorbox2018/views/list_categorias.php">Categoria</a></li>
       <li><a href="/gestorbox2018/views/list_cajas.php">Caja</a></li>
@@ -52,7 +50,7 @@
        <!--<li><a href="/gestorbox2018/views/estadisticas.php">Estadisticas</a></li> -->
 
 
-        <li><a href="/gestorbox2018/controllers/logout.php/"><span class="glyphicon glyphicon-user"></span> Salir </a></li> <?php
+        <li><a href="/gestorbox2018/controllers/logout.php/"><span class="btn btn-danger navbar-btn">SALIR</span> </a></li> <?php
        }  ?> </a></li>
         <!--<li><a href="/gestorbox2018/views/add_user.php"><span class="glyphicon glyphicon-user"></span> Registrarse </a></li> -->
         

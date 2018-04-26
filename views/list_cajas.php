@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 
 <div class="container">
-  <h2></h2>
+  
    <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th>
    <th><input type="button" onclick="showAll()" class="default"  value="Ver Todo"></button></th>
   
