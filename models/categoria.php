@@ -46,11 +46,29 @@ public function CodCategoria($elemento) {
   
   }
 
+
+//   public function listCant() {
+ //   $query = Categoria::connection()->prepare("SELECT * FROM categoria");
+  //  $query->execute();
+ //   return $query->rowCount();
+  //}
+
+
    public function listCant() {
-    $query = Categoria::connection()->prepare("SELECT * FROM categoria");
+    $mi_sector = $_SESSION['id_sector'];
+    $query = Categoria::connection()->prepare("SELECT * FROM categoria where($mi_sector = categoria.id_sector )");
     $query->execute();
     return $query->rowCount();
   }
+   
+
+
+    public function CantTotal() {
+    $query = Categoria::connection()->prepare("SELECT * FROM categoria ");
+    $query->execute();
+    return $query->rowCount();
+  }
+
 
 
     public function update($nombre, $cod , $id_categoria) {

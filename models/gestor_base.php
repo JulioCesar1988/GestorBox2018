@@ -1,11 +1,8 @@
 
 
-
 <?php
 
-
 class GestorBase {
-   
    
 // Start the session
 

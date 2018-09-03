@@ -14,7 +14,7 @@
 <body>
 	 <?php include '../views/navbar.php';?>
 
-
+<!--
 <CENTER>
 <p>Login</p>
 <form action="../controllers/login_submit.php" method="post">
@@ -24,6 +24,27 @@ Clave: <input type="password" name="clave"><br>
 <input class="btn btn-primary" role="button"  type="submit">
 
 </form> </CENTER>
+-->
+
+
+<div class="container">
+  <h2>Login </h2>
+  <form action="../controllers/login_submit.php" method="post">
+    <div class="form-group">
+      <label for="email">Usuario</label>
+      <input type="email" class="form-control" id="email" placeholder="ingrese usuario" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Contraseña</label>
+      <input type="password" class="form-control" id="pwd" placeholder="ingrese clave" name="clave">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" >Ingresar</button>
+  </form>
+</div>
 
 
 </body>

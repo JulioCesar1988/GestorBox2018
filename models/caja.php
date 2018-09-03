@@ -24,14 +24,14 @@ class Caja extends GestorBase  {
  static public function load($id){
     $query = User::connection()->prepare("SELECT * FROM caja WHERE (id_caja = ?)");
     $query->execute(array($id));
-    $resultado = $query->fetch(PDO::FETCH_ASSOC);
-    $aUsr = new Caja();
+    $resultado     = $query->fetch(PDO::FETCH_ASSOC);
+    $aUsr          = new Caja();
     $aUsr->id_caja = $resultado["id_caja"];
     $aUsr->descripcion = $resultado["descripcion"];
-    $aUsr->precintoA = $resultado["precintoA"];
-    $aUsr->precintoB = $resultado["precintoB"];
-    $aUsr->codigo = $resultado["codigo"];
-    $aUsr->id_sector = $resultado["id_sector"];
+    $aUsr->precintoA   = $resultado["precintoA"];
+    $aUsr->precintoB   = $resultado["precintoB"];
+    $aUsr->codigo      = $resultado["codigo"];
+    $aUsr->id_sector   = $resultado["id_sector"];
     $aUsr->id_categoria = $resultado["id_categoria"];
     return $aUsr;
   }
@@ -39,6 +39,14 @@ class Caja extends GestorBase  {
 public function getId_caja(){
   return $this->id_caja;
 }
+
+public function get_eventos($id){
+    $query = Caja::connection()->prepare("SELECT * FROM caja where($id = id_caja)");
+    $query->execute();
+    return $query->rowCount();
+}
+
+
 
 
  
@@ -92,13 +100,13 @@ public function getId_caja(){
 
    // update full del administrador del sistema .
    public function update($descripcion, $precintoA, $precintoB , $ubicacion ,$codigo,$id_categoria ,$id_caja ) {
-    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ? , ubicacion = ? ,codigo = ? , id_categoria = ?  WHERE (id_caja = ?) ");
-    $query->execute(array($descripcion,$precintoA,$precintoB,$ubicacion,$codigo,$id_categoria,$id_caja));
+    $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ? , ubicacion = ? ,codigo = ? , id_categoria = ? WHERE (id_caja = ?) ");
+    $query->execute(array($descripcion,$precintoA,$precintoB,$ubicacion,$codigo,$id_categoria,$id_caja,$evento));
 
   }
 
 // modificacion del los jefe de sectores sobre sus cajas. 
-public function updateJefe($descripcion, $precintoA, $precintoB,$id_categoria,$id_caja ) {
+public function updateJefe($descripcion, $precintoA, $precintoB,$id_categoria,$id_caja) {
     $query = Caja::connection()->prepare("UPDATE caja SET  descripcion = ? , precintoA = ? , precintoB = ? ,id_categoria = ?  WHERE (id_caja = ?) ");
     $query->execute(array($descripcion,$precintoA,$precintoB,$id_categoria,$id_caja));
   }
@@ -106,9 +114,9 @@ public function updateJefe($descripcion, $precintoA, $precintoB,$id_categoria,$i
   
 
 //  modificacion del archivador en una caja .    
-public function updateArchivador($precintoA,$precintoB,$ubicacion,$id_caja){
+public function updateArchivador($precintoA,$precintoB,$ubicacion,$id_caja ){
 $query = Caja::connection()->prepare("UPDATE caja SET   precintoA = ? , precintoB = ?  , ubicacion = ?  WHERE (id_caja = ?) ");
-    $query->execute(array($precintoA,$precintoB,$ubicacion,$id_caja));
+$query->execute(array($precintoA,$precintoB,$ubicacion,$id_caja));
 
 }
 
@@ -139,26 +147,17 @@ foreach ($categoria as &$c) {
 }
 
 //echo $cantidad.'<br>';
-
-
-
  $sector = $cod1;   // codigo del sector dos caracteres.
  $categoria = $cod2; // codigo de la categoria un caracter. 
  $num = $cantidad;    //  
  //echo 'Codigo Generado -> '.$sector.$categoria.date('ym').'0000'.(string)$num;
- 
-
 $codigo = $sector.$categoria.date('ym').'0000'.(string)$num;
-
-
-
-
-    $query = Caja::connection()->prepare("INSERT INTO caja (descripcion,precintoA,precintoB,id_sector,ubicacion,codigo,id_categoria ) VALUES (?,?,?,?,?,?,?)");
+$aConn = Caja::connection();
+    $query = $aConn->prepare("INSERT INTO caja (descripcion,precintoA,precintoB,id_sector,ubicacion,codigo,id_categoria) VALUES (?,?,?,?,?,?,?)");
     $query->execute(array($descripcion,$precintoA,$precintoB,$id_sector,$ubicacion,$codigo,$id_categoria));
 
+return $aConn->lastInsertId();
 
-
-  
   }
 
   public function listCant() {
@@ -167,6 +166,16 @@ $codigo = $sector.$categoria.date('ym').'0000'.(string)$num;
     $query->execute();
     return $query->rowCount();
   }
+
+
+   public function CantTotal() {
+    $query = Caja::connection()->prepare("SELECT * FROM caja ");
+    $query->execute();
+    return $query->rowCount();
+  }
+
+
+
 
 }
 ?>

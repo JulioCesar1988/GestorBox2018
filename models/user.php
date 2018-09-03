@@ -58,12 +58,22 @@ public function getId_usuario(){
     $users = $query->fetchAll();
   }
 
- // 
-  public function listCant() {
-    $query = User::connection()->prepare("SELECT * FROM usuario");
+ 
+  // public function listCant() {
+  //  $query = User::connection()->prepare("SELECT * FROM usuario");
+  //   $query->execute();
+  //  return nt();
+  // }
+
+
+
+
+    public function listCant() {
+    $query = User::connection()->prepare("SELECT * FROM usuario ");
     $query->execute();
-    return nt();
+    return $query->rowCount();
   }
+
 
 // Eliminacion de usuario dado email 
   public function delete($email) {

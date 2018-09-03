@@ -53,7 +53,7 @@
            if ($_SESSION['rol'] != "archivador") { ?>
                  
      <th><a href="../views/show_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/delete_sector.php?id_sector=<?php echo  $s["id_sector"] ?>" onclick="return confirm('¿Estas seguro?');"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_sector.php?id_sector=<?php echo  $s["id_sector"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 
 

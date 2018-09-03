@@ -54,7 +54,7 @@
            if ($_SESSION['rol'] == "admin") { ?>
 
               <th><a href="../views/show_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>                 
-                 <th><a  href="../views/delete_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+                 <th><a  href="../views/delete_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>" onclick="return confirm('¿Estas seguro?');"  class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_user.php?id_usuario=<?php echo  $u["id_usuario"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 
        

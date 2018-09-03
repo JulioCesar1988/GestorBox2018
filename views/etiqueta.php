@@ -23,7 +23,7 @@ $id = $_GET['id'];
 <head>
   <title>Generar Códigos de Barras - Denisse Estrada</title>
   <meta charset="UTF-8">
-</head>
+  <script src="../jquery-3.3.1.min.js"></script> 
 <style>
 input[type=text] {
     width: 50%;
@@ -45,15 +45,6 @@ button {
     cursor: pointer;
 }
 </style>
-<body>
-  <center>
-  
-   <!--<div id="imagen"></div>-->
-  </center>
-
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
   <script>
 
 
@@ -66,26 +57,14 @@ button {
   
   
   </script>
- <!-- <center><img alt="<?php echo "$id" ?>" src="../barcode/barcode.php?codetype=Codabar&size=100&text=<?php echo "$id" ?>"/> </center> -->
-  <!-- <center><?php echo "$id"; ?> </center> --> 
- 
-
-
+</head>
+<body>
 <div class="container">
   <table class="table">
-    <thead>
-      <tr>
-      
- 
-      </tr>
-    </thead>
     <tbody id="myTable" >
   <?php  foreach ($cajas AS $c )
 {   ?>
       <tr>
-        
-      
-        
         <script>
    // Vamos a iterar por todas las cajas para generar todas las equiquetas de su sector .    
     var data = "<?php echo  $c["codigo"] ?>";  

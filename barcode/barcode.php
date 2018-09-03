@@ -119,7 +119,6 @@ function barcode( $filepath="", $text="0", $size="20", $orientation="horizontal"
 		$img_width = $size;
 		$img_height = $code_length*$SizeFactor;
 	}
-
 	$image = imagecreate($img_width, $img_height + $text_height);
 	$black = imagecolorallocate ($image, 0, 0, 0);
 	$white = imagecolorallocate ($image, 255, 255, 255);

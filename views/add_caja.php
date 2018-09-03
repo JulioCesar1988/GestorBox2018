@@ -11,20 +11,19 @@
  $sectores = Sector::ListAll();
  $categorias = Categoria::ListAll();
  ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <?php include '../include/head.php';?>
  <script>
   function validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
       alert("El valor " + numero + " No es valido , verifique que el numero de precinto sea valido Recuerde que solo sea numeros");
   }
 </script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!DOCTYPE html>
-<html lang="en">
+  </head>
   <body>
 
-     <?php include '../include/head.php';?>
      <?php include '../views/navbar.php';?>
     <div class="row">
       <div class="col-md-offset-4 col-md-4" style="text-align: center;">

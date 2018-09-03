@@ -28,15 +28,51 @@ $(document).ready(function(){
   });
 });
 </script>
+
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+
+
 </head>
 <body>
   <?php include '../views/navbar.php';?>
 <center>
+
+
+
+
+<!--<h2>Enviando Pedido</h2>
+<div class="loader"></div> -->
+
+
+
 <div class="container">
 </div>
   <form class="navbar-form " action="../views/estadisticas.php">
   <div class="input-group">
     <input id="myInput"  type="text" class="form-control" placeholder="Buscar Caja ">
+    
     <div class="input-group-btn">
     </div>
   </div>
@@ -67,8 +103,8 @@ $(document).ready(function(){
 
 <div class="container">
   
-   <th><a  href="../views/add_caja.php"  class="btn btn-primary" role="button" >Agregar</a></th>
-   <th><input type="button" onclick="showAll()" class="default"  value="Ver Todo"></button></th>
+   <th><a  href="../views/add_caja.php"  class="btn btn-primary btn-sm" role="button" >Agregar</a></th>
+   <th><input type="button"  onclick="showAll()" class="default"  value="Ver Todo"></button></th>
   
 
   <!--<button type="button" class="btn btn-default">Default</button>
@@ -158,9 +194,25 @@ $(document).ready(function(){
         
         <?php if (isset($_SESSION['email'])){    
            if ($_SESSION['rol'] != "archivador") { ?>
-              
-               <th><a  href="../controllers/PHPMailer.php?id_caja=<?php echo $c["id_caja"] ?>"  class="btn btn-success" role="button" >Pedir</a></th>
-                <th><a href="../views/show_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-info" role="button" >Informacion</a></th> 
+
+
+
+                <th><a  href="../controllers/PHPMailer.php?id_caja=<?php echo $c["id_caja"] ?>"  class="btn btn-success btn-sm" role="button" >Pedir</a></th>
+                <th><a href="../views/show_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-info btn-sm" role="button" >Informacion</a></th>
+               <!-- <th><a href="../views/show_eventos.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-default btn-sm" role="button" >Eventos</a></th> -->
+   
+ <!--                       
+<div class="container">
+  <h2>Button Styles</h2>
+  <button type="button" class="btn">Basic</button>
+  <button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>  -->
 
 <?php          } 
            else { ?> 
@@ -170,13 +222,13 @@ $(document).ready(function(){
         }?>
 
         <?php  if ($_SESSION['rol'] == "admin") { ?>  
-         <th><a  href="../views/delete_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+         <th><a  href="../views/delete_caja.php?id_caja=<?php echo  $c["id_caja"] ?>" onclick="return confirm('¿Estas seguro?');" class="btn btn-danger btn-sm" role="button" >Eliminar</a></th>
                 <?php  } ?>
 
 
-        <th><a  href="../views/edit_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
-        <th><a  href="../views/etiqueta.php?id=<?php echo  $c["codigo"] ?>"  class="btn btn-default" role="button" >Etiqueta</a></th>
-       
+        <th><a  href="../views/edit_caja.php?id_caja=<?php echo  $c["id_caja"] ?>"  class="btn btn-warning btn-sm" role="button" >Modificar</a></th>
+        <th><a  href="../views/etiqueta.php?id=<?php echo  $c["codigo"] ?>"  class="btn btn-default btn-sm" role="button" >Etiqueta</a></th>
+            <th><a href="../views/show_eventos.php?id_caja=<?php echo  $c["id_caja"] ?>"   class="btn btn-info btn-sm" role="button" >Eventos</a></th>       
 
 
 

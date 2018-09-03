@@ -1,78 +1,99 @@
+
+<?php
+ require_once("../models/user.php"); 
+ require_once("../models/connection.php");
+ require_once("../models/sector.php");
+ require_once("../models/categoria.php");
+ require_once("../models/caja.php");
+ require_once("../models/user.php");
+ require_once("../models/historial.php");
+ 
+ $connection = new Connection(); 
+ $connection = $connection->getConnection();  
+ 
+
+
+
+if(( $_SESSION['rol'] == "archivador")|| ($_SESSION['rol'] == "admin") ){
+ $cantCajas = Caja::CantTotal(); 
+ $cantSectores = Sector::listCant();
+ $cantUser = User::listCant();
+ $cantCategorias = Categoria::CantTotal();
+ $mis_historias = Historial::listCantHistoria();
+
+
+}else {
+
+
+ $cantCajas = Caja::listCant(); 
+ $cantSectores = Sector::listCant();
+ $cantUser = User::listCant();
+ $cantCategorias = Categoria::listCant();
+ $mis_historias = Historial::listCantHistoria();
+
+}
+
+
+
+ ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Bootstrap Example</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-
-<!-- Version de forma local  -->
-<link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.min.css">
-<script src="../bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
-<script src="../jquery-3.3.1.min.js"></script>
-
+  <title> Estadisticas </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
+ <?php include '../include/head.php';?>
+ <?php include '../views/navbar.php';?>
+<!-- Bueno tenemos que traer los datos del sistema --> 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
 
-<div class="container">
-  <h3>Navbar Forms</h3>
-  <p>Use the .navbar-form class to vertically align form elements (same padding as links) inside the navbar.</p>
+<div class="w3-container"> 
+  <canvas id="myChart"  height="400vw" width="800vw" style="max-width:100%;height: :auto;"></canvas>
+  <script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+        labels: ["Sectores del sistema ", "Cajas de su sector", "Usuarios del sistema","tus categorias ", " tus Historias"],
+        datasets: [{
+            label: '# of Votes',
+            //aca tenemos que poner los valores con php 
+            data: [<?php echo $cantSectores ?>,<?php echo $cantCajas ?> , <?php echo  $cantUser ?>, <?php echo $cantCategorias ?>, <?php   echo $mis_historias ?>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 3
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
 </div>
+
 
 </body>
 </html>

@@ -7,12 +7,12 @@ class Historial extends GestorBase {
      session_start();
     // Solo quiero mis historias , como usuario me interesan el historial de mis cajas . 
      $iduser = $_SESSION['id_usuario'];
-    $query = Historial::connection()->prepare("SELECT *,usuario.nombre as id_usuario  , caja.codigo as id_caja  FROM Historial inner join usuario on ( historial.id_usuario = usuario.id_usuario )  inner join caja on ( historial.id_caja = caja.id_caja) where ( historial.id_usuario = $iduser ) ");
+    $query = Historial::connection()->prepare("SELECT *,usuario.nombre as id_usuario  , caja.codigo as id_caja  FROM historial inner join usuario on ( historial.id_usuario = usuario.id_usuario )  inner join caja on ( historial.id_caja = caja.id_caja) where ( historial.id_usuario = $iduser ) ");
     $query->execute();
     
      if (($_SESSION['rol'] == 'archivador') || ($_SESSION['rol'] == 'admin')){ 
           
-             $query = Historial::connection()->prepare("SELECT *,usuario.nombre as id_usuario  , caja.codigo as id_caja , historial.fecha as fecha FROM Historial inner join usuario on ( historial.id_usuario = usuario.id_usuario )  inner join caja on ( historial.id_caja = caja.id_caja) ");
+             $query = Historial::connection()->prepare("SELECT *,usuario.nombre as id_usuario  , caja.codigo as id_caja , historial.fecha as fecha FROM historial inner join usuario on ( historial.id_usuario = usuario.id_usuario )  inner join caja on ( historial.id_caja = caja.id_caja) ");
                $query->execute();
 
     } 
@@ -47,6 +47,16 @@ class Historial extends GestorBase {
     $query->execute();
     return $query->rowCount();
   }
+
+  public function listCantHistoria() {
+    $mi_id = $_SESSION['id_usuario'];
+    $query = Historial::connection()->prepare("SELECT * FROM historial where($mi_id = historial.id_usuario )");
+    $query->execute();
+    return $query->rowCount();
+  }
+
+
+
 
 
 }

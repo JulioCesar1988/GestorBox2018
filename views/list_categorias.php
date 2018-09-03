@@ -66,7 +66,7 @@
 
 
    <?php if ( $_SESSION['rol'] == "admin") { ?>
-     <th><a  href="../views/delete_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+     <th><a  href="../views/delete_categoria.php?id_categoria=<?php echo  $c["id_categoria"] ?>"  onclick="return confirm('¿Estas seguro?');" class="btn btn-danger" role="button" >Eliminar</a></th>
     <?php }  ?>
 
         

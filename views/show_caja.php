@@ -1,5 +1,7 @@
 <?php
 include_once ("../include/params.php");
+require_once("../models/evento.php"); 
+require_once("../models/connection.php");
 // Create connection
 $conn = new mysqli(Params::$DB_Host,Params::$DB_usuario,Params::$DB_clave,Params::$DB_nombre);
 // Check connection
@@ -20,6 +22,8 @@ $ubicacion = "null ";
 $id_sector = "null ";
 $codigo    = "null";
 $id_categoria = "null ";
+$evento = "null ";
+
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -30,24 +34,20 @@ if ($result->num_rows > 0) {
         $ubicacion = $row["ubicacion"];
         $id_sector = $row["id_sector"];
         $codigo    = $row["codigo"];
-        $id_categoria = $row["id_categoria"];             
+        $id_categoria = $row["id_categoria"];
+                     
     }
 
-
-
-
-
-
-
-
-
-
+ //buscamos los eventos de la caja con un ID dado 
+ $eventos = Evento::listEventBox($id_caja); 
+ 
 
 } else {
         echo "0 results";
 }
 $conn->close();
 ?>
+
 
  
 <!-- Latest compiled and minified CSS -->
@@ -73,10 +73,49 @@ $conn->close();
   <li class="list-group-item">Sector: <?php echo " $id_sector"; ?> </li>
   <li class="list-group-item">Categoria : <?php echo " $id_categoria"; ?></li>
   <li class="list-group-item">Codigo : <?php echo " $codigo"; ?></li>
+  <li class="list-group-item"><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  "$codigo"; ?>&print=false"></li>
 </ul>
         </div>
       </div>
     </div>
+<div class="container">
+</div>
 
+
+
+<div class="container">
+  <p>Eventos.</p>
+  <table class="table">
+    <thead>
+
+      <tr>
+       
+        <th>Usuario</th>
+        <th>ID Caja</th>
+        <th>Tipo de evento</th>
+        <th>Fecha </th>
+      </tr>
+    </thead>
+    <tbody>
+  <?php  foreach ($eventos AS $e )
+{   ?>
+      <tr>
+       
+        <td><?php echo  $e["id_usuario"] ?></td>
+        <td><?php echo  $e["id_caja"] ?></td>
+        <td><?php echo  $e["tipo_evento"] ?></td>
+         <td><?php echo  $e["fecha"] ?></td>
+                 
+   <?php   }  ?>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+

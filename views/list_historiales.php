@@ -57,7 +57,7 @@
 
     <td><img alt="Coding Sips" src="../barcode/barcode.php?text=<?php echo  $h["codigo"]?>&print=false" /></td>
         <th><a href="../views/show_historial.php?id_historial=<?php echo  $h["id_historial"] ?>"  class="btn btn-info" role="button" >Informacion</a></th>
-        <th><a  href="../views/delete_historial.php?id_historial=<?php echo  $h["id_historial"] ?>"  class="btn btn-danger" role="button" >Eliminar</a></th>
+        <th><a  href="../views/delete_historial.php?id_historial=<?php echo  $h["id_historial"] ?>" onclick="return confirm('¿Estas seguro?');" class="btn btn-danger" role="button" >Eliminar</a></th>
         <th><a  href="../views/edit_historial.php?id_historial=<?php echo  $h["id_historial"] ?>"  class="btn btn-warning" role="button" >Modificar</a></th>
 <?php } ?>
 

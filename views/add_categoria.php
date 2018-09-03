@@ -6,6 +6,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
+<head>     <?php include '../include/head.php';?></head>
   <body>
   	 <?php include '../views/navbar.php';?>
     <div class="row">

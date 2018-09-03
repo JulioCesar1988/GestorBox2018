@@ -1,9 +1,4 @@
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <?php
  require_once("../models/user.php"); 
  require_once("../models/connection.php");
@@ -14,8 +9,11 @@
  $usuarios = User::listAll();
  $sectores = Sector::ListAll();
  ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
+<head>     <?php include '../include/head.php';?></head>
   <body>
      <?php include '../views/navbar.php';?>
     <div class="row">

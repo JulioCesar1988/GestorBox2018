@@ -18,7 +18,11 @@ class Sector extends GestorBase {
     return $query->fetchAll();
   }
 
-
+  static public function load($id){
+   $query = Sector::connection()->prepare("SELECT * FROM sector WHERE id_sector =  $id");
+    $query->execute();
+    return $query->fetchAll(); 
+  }
  
  
   public function insert($nombre, $cod ) {
