@@ -68,11 +68,11 @@ try {
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     //$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;            // Enable SMTP authentication
-    $mail->Username = 'noreply@millerbi.net';                 // SMTP username
-    $mail->Password = 'nor.mbi2017';                           // SMTP password
+    $mail->Username = 'XXXXXXXXX@XXXXXX';                 // SMTP username
+    $mail->Password = 'XXXXXX';                           // SMTP password
     $mail->setFrom('noreply@millerbi.net', 'gestorbox2018');
-    $mail->addAddress('jcontreras@millerbi.net', 'gestorbox2018');
-    $mail->addAddress('archivador@millerbi.net', 'gestorbox2018');     // Add a recipient
+    $mail->addAddress('XXXXXXX@XXXXXXXXXXX.XXX', 'gestorbox2018');
+    $mail->addAddress('XXXXX@XXXXXXX.XXXX', 'gestorbox2018');     // Add a recipient
     $mail->SMTPOptions = array(
             'ssl' => array(
                 'verify_peer' => false,
